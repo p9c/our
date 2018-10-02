@@ -1,2 +1,2 @@
-# our
+# Ouroboros
 ParallelCoins Ouroboros
