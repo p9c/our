@@ -2,7 +2,7 @@
 ParallelCoins Ouroboros
 
 
-https://mm.tt/1156126210?t=OjEA4qpnM9
+<a href="https://mm.tt/1156126210?t=OjEA4qpnM9">Visual map presentation</a>
 
 
 ## Jorm 
