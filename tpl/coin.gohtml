@@ -1,0 +1,205 @@
+{{define "head"}} <title>{{.Coin.Name}}</title> {{end}}
+
+{{define "body"}}
+
+<div class="panel bg-gray">
+  <div class="panel-header">
+    <div class="panel-title">{{.Coin.Name}}</div>
+  </div>
+  <div class="panel-nav">
+    <!-- navigation components: tabs, breadcrumbs or pagination -->
+  </div>
+  <div class="panel-body">
+    <!-- contents -->
+  
+<div class="container">
+
+
+
+
+
+<section id="main" class="coin" role="main">
+    <div class="hml">
+
+
+		<header class="page-header">
+<h1 class="page-title">{{.Coin.Name}}</h1>
+<div class="taxonomy-description">{{.Coin.Name}}</div>
+		</header><!-- .page-header -->
+
+
+  
+    <amp-img src="data:image/png;base64,{{.Coin.Imgs.Img128}}"
+    alt="{{.Coin.Name}}"
+  width="128"
+  height="128"
+  layout="fixed"
+  class="m1">
+  <noscript>
+    <img src="data:image/png;base64,{{.Coin.Imgs.Img128}}" width="128" height="128" alt="{{.Coin.Name}}"> 
+  </noscript>
+</amp-img>
+
+
+
+
+
+  <div class="columns">
+<div class="column col-6 col-xs-12">
+<amp-list 
+  id="coin-data"
+  width="auto"
+  height="800"
+  layout="flex-item"
+  src="//com-http.us:8985/json/coins/{{.Coin.Slug}}.json"
+  items= "coin"
+  single-item
+  class="m1">
+  <template type="amp-mustache"
+    id="coin-data">
+    
+    <dl>
+    <dt>Name</dt><dd>{{`{{name}}`}}</dd>
+    <dt>Symbol</dt><dd>{{`{{symbol}}`}}</dd>
+    <dt>Algorithm</dt><dd>{{`{{algo}}`}}</dd>
+
+    
+    <dt>Description</dt><dd>{{`{{cdata.description}}`}}</dd>
+    <dt>Total Coin Supply</dt><dd>{{`{{cdata.total}}`}}</dd>
+    <dt>Difficulty Adjustment</dt><dd>{{`{{cdata.diff}}`}}</dd>
+    <dt>Block Reward Reduction</dt><dd>{{`{{cdata.rew}}`}}</dd>
+    
+    <dt>Proof Type</dt><dd>{{`{{cdata.proof}}`}}</dd>
+    <dt>Start Date</dt><dd>{{`{{cdata.start}}`}}</dd>
+    <dt>Twitter</dt><dd>{{`{{cdata.tw}}`}}</dd>
+    <dt>Website Url</dt><dd>{{`{{cdata.web}}`}}</dd>
+    
+    
+    
+    </dl>
+  </template>
+</amp-list>
+
+</div>
+
+<div class="column col-6 col-xs-12">
+            <div class="panel">
+              <div class="panel-header">
+                <div class="panel-title h6">News</div>
+              </div>
+              <div class="panel-body">
+                
+
+
+
+<amp-list 
+  id="coin-data"
+  width="auto"
+  height="800"
+  layout="flex-item"
+  src="//{{.Coin.Slug}}.com-http.us:8985/api/news"
+  items= "query.results.item"
+    class="m1">
+  <template type="amp-mustache"
+    id="coin-data">
+    
+    
+    
+    
+
+
+                <div class="tile">
+                  <div class="tile-icon">
+                    <figure class="avatar">
+                      <amp-img layout="responsive" src="https://picturepan2.github.io/spectre/img/avatar-1.png" width="32" height="32" alt="Avatar" class="i-amphtml-element i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-layout"><i-amphtml-sizer style="padding-top: 100%;"></i-amphtml-sizer><img decoding="async" alt="Avatar" src="https://picturepan2.github.io/spectre/img/avatar-1.png" class="i-amphtml-fill-content i-amphtml-replaced-content"></amp-img>
+                    </figure>
+                  </div>
+                  <div class="tile-content">
+                    <p class="tile-title">{{`{{{title}}}`}}<br>{{`{{{link}}}`}}<br>{{`{{{pubDate}}}`}}</p>
+                    <p class="tile-subtitle">{{`{{{description}}}`}}</p>
+                  </div>
+                </div>
+                
+
+
+    
+    
+  </template>
+</amp-list>
+
+
+              </div>
+              <div class="panel-footer">
+                
+              </div>
+            </div>
+          </div>
+
+
+
+</div>
+
+
+
+
+
+<form method="get" target="_blank" action="https://isthiscoinascam.com/check/{{.Coin.Slug}}">
+<button class="btn btn-primary btn-lg h3" type="submit" >Is {{.Coin.Name}} Scam?</button>
+</form>
+
+
+<amp-iframe title="{{.Coin.Slug}}Trends - Interest over time"
+  src="https://trends.google.com/trends/embed/explore/TIMESERIES?req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22{{.Coin.Slug}}%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%22today%2012-m%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D&tz=-120&eq=q%3D{{.Coin.Slug}}%26date%3Dtoday%2012-m"
+      height="360"
+    width="auto"
+  layout="flex-item"
+  frameborder="0"
+  sandbox="allow-scripts allow-same-origin">
+  <amp-img src="https://parallelcoin.io/wp-content/uploads/2017/11/parallel_coinN1oB.png"
+    layout="fixed-height"
+    width="auto"
+    height="500"
+    placeholder>
+  </amp-img>
+</amp-iframe>
+
+
+
+<amp-timeago class="m1"
+  width="160"
+  height="20"
+  datetime="2017-03-14T00:37:33.809Z">Tuesday 14 March 2017 00.37</amp-timeago>
+
+  <amp-facebook-like width="90"
+  height="20"
+  layout="fixed"
+  data-layout="button_count"
+  data-href="https://www.facebook.com/testesmegadivertidos/">
+</amp-facebook-like>
+
+
+<amp-facebook-comments width="552"
+  height="310"
+  layout="responsive"
+  data-order-by="time"
+  data-href="http://www.directlyrics.com/adele-25-complete-album-lyrics-news.html">
+</amp-facebook-comments>
+</section>
+
+
+
+
+</div>
+
+</div>
+  <div class="panel-footer">
+    <!-- buttons or inputs -->
+  </div>
+</div>
+{{end}}
+
+
+
+
+
+

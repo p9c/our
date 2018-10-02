@@ -1,0 +1,29 @@
+package services
+
+import (
+	"comhttpus/mod"
+	"fmt"
+)
+
+func GetNames() {
+	coins := GetCoins().([]models.Coin)
+	//var cert models.OneCert
+	var ocert []string
+	mico := 1
+	for ico := range coins {
+		name := coins[ico].G
+		ocert = make([]string, 99) // made empty of length and capacity 3
+
+		if mico < 99 {
+			//ocert = append(ocert, name)
+			//copy(ocert, name[:99])
+
+			if mico == 99 {
+				mico = 1
+			}
+		}
+		fmt.Println("Radi ocertocertocertocertocertocertocertocert", ocert)
+
+	}
+
+}
