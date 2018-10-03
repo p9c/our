@@ -1,6 +1,6 @@
 package mod
 
-import "comhttpus/amp"
+import "github.com/parallelcointeam/our/amp"
 
 type Coin struct {
 	Name   string `json:"name"`
@@ -40,27 +40,17 @@ type CoinData struct {
 // 	Z string `json:"z"`
 // }
 
-type HC struct {
-	N string `json:"n"`
-	S string `json:"s"`
-	G string `json:"g"`
-	//A string `json:"a"`
-	//Z string `json:"z"`
-	I string `json:"i"`
-}
 type HCL struct {
-	Coins []HC `json:"coins"`
+	Coins []VCoin `json:"coins"`
+	//Algos []Algo        `json:"algos"`
+	AMPimg amp.AMPi `json:"amp"`
 }
 type VCoin struct {
 	Coin Coin `json:"coin"`
 }
-type Home struct {
-	Coins []interface{} `json:"coins"`
-	//Algos []Algo        `json:"algos"`
-	AMP amp.AMP `json:"amp"`
-}
+
 type CoinVw struct {
 	Coin Coin `json:"coin"`
 	//Algos []Algo        `json:"algos"`
-	AMP amp.AMP `json:"amp"`
+	AMPimg amp.AMPi `json:"amp"`
 }

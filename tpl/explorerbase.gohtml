@@ -2,18 +2,16 @@
 <!doctype html>
 <html ⚡>
 <head>
- <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-
+  <meta charset="utf-8">
     {{template "head" .}}
-
   <script async src="https://cdn.ampproject.org/v0.js"></script>
 
+  
 
-
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
 <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
 <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
 <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
 <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
@@ -21,9 +19,6 @@
 <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
   <script async custom-element="amp-timeago" src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"></script>
   <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
-<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
-<script async custom-element="amp-facebook-like" src="https://cdn.ampproject.org/v0/amp-facebook-like-0.1.js"></script>
-<script async custom-element="amp-facebook-comments" src="https://cdn.ampproject.org/v0/amp-facebook-comments-0.1.js"></script>
 
   <!--
     The AMP boilerplate.
@@ -34,31 +29,38 @@
  
   <style amp-custom>
        {{template "spectre.gohtml" .}}
+
        {{template "style.gohtml" .}}
+
     </style>
 </head>
-<body class="{{template "bodyclass" .}}">
-<div class="scs">
-<div class="scr hds">
+<body>
 <header class="header container panel bg-gray pt-2 pb-2">
   <div class="columns panel-body">
-  <div class="column col-12">
-<h1 class="h1"><a href="/">COMHTTP</a></h1>
+  <div class="column col-5">
+<h1 class="h1"><a href="/">ParallelCoin Blockchain Explorer</a></h1>
   </div>
+  <div class="column col-7">
+  <form method="GET"
+  class="p4"
+  action="/search"
+  target="_top">
+    <div class="form-group has-success columns">
+
+    <input type="text"
+    class="form-label column col-10" 
+      placeholder="Search..."
+      name="src">
+  <input type="submit"
+    value="Search"
+    class="btn btn-primary input-group-btn column col-2">
+  </div>
+  </form>
+</div>
 </div>
 </header>
-</div>
-<div class="scr mns">
-<main class="main container panel bg-gray pt-2 pb-2">
+
     {{template "body" .}}
-</main>
-</div>
-<div class="scr fts">
-    <footer class="footer container panel bg-gray pt-2 pb-2">
-    FooTeR FooTeR FooTeR FooTeR FooTeR FooTeR 
-    </footer>
-    </div>
- </div>
 </body>
 </html>
 {{end}}

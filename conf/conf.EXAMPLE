@@ -1,0 +1,13 @@
+package conf
+
+import (
+	"github.com/parallelcointeam/jorm/sys"
+)
+type Config struct{
+	ComServer string
+}
+func CsYsConf() *Config {
+	return &Config{
+		ComServer:   "127.0.0.1:8080",
+	}
+}

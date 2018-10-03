@@ -1,54 +1,56 @@
 {{define "head"}} <title>COMHTTP</title> {{end}}
 
+{{define "bodyclass"}} home{{end}}
+
 {{define "body"}}
-<div class="panel bg-gray">
   <div class="panel-header">
-    <div class="panel-title">COMHTTP</div>
+    <div class="panel-title">
+    <button class="ampstart-btn caps m1" on="tap:AMP.setState({sts: {st: 'coins'}})">
+      Set to Coins
+    </button>
+    </div>
   </div>
-  <div class="panel-nav">
-    <!-- navigation components: tabs, breadcrumbs or pagination -->
+    <div class="panel-body">
+
+        <amp-state id="sts">
+      <script type="application/json">
+      { "st" : "home",
+        "home": {
+          "iframeUrl": "http://com-http.us:8985/home"
+        },
+         "coins": {
+          "iframeUrl": "http://com-http.us:8985/coins"
+        }
+      }
+      </script>
+    </amp-state>
+
+  <amp-iframe id="amp-iframe"
+  title="Coins"
+  width="500"
+  height="281"
+  layout="responsive"
+  sandbox="allow-scripts allow-same-origin allow-popups"
+  frameborder="0"
+  src="http://com-http.us:8985/home"
+  [src]="sts[sts.st].iframeUrl">
+  </amp-iframe>
   </div>
-  <div class="panel-body">
-    <!-- contents -->
-  
-<div class="container">
-
-
-
-
-<div class="container"> 
-
-
-      {{range .Coins}}
-
-      
-        <a href="http://{{.coin.slug}}.com-http.us" class="hcoin {{.coin.algo}}" data="{{.coin.algo}}">    
-      <amp-img src="data:image/png;base64,{{.coin.imgs.img32}}"
-    alt="{{ .coin.name}}"
-    width="32"
-    height="32"
-    layout="fixed"
-    class="m1">
-    <noscript>
-      <img src="data:image/png;base64,{{.coin.imgs.img32}}" width="32" height="32" alt="{{.coin.name}}"> 
-    </noscript>
-  </amp-img>
-  </a>
-  
-  {{end}}
-
-  
-  
-  
-  </div>
-
-
-
-</div>
-
-</div>
-  <div class="panel-footer">
-    <!-- buttons or inputs -->
-  </div>
-</div>
 {{end}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

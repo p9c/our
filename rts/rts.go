@@ -1,18 +1,21 @@
 package rts
 
 import (
-	"comhttpus/amp"
-	"comhttpus/jdb"
-	"comhttpus/mod"
-	"encoding/json"
 	"fmt"
 	"html/template"
 	"io/ioutil"
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/parallelcointeam/our/amp"
+	"github.com/parallelcointeam/our/conf"
+	"github.com/parallelcointeam/our/jdb"
+	"github.com/parallelcointeam/our/mod"
+	"github.com/parallelcointeam/our/ser"
 )
 
+var cf = conf.CsYsConf()
+var ComServer = cf.ComServer
 var templates = make(map[string]*template.Template)
 
 var last string
@@ -22,30 +25,34 @@ func init() {
 		templates = make(map[string]*template.Template)
 	}
 	templates["index"] = template.Must(template.ParseFiles("tpl/index.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/base.gohtml"))
+	templates["coins"] = template.Must(template.ParseFiles("tpl/coins.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/emptybase.gohtml"))
+	templates["home"] = template.Must(template.ParseFiles("tpl/home.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/emptybase.gohtml"))
 	templates["coin"] = template.Must(template.ParseFiles("tpl/coin.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/base.gohtml"))
+	templates["explorerindex"] = template.Must(template.ParseFiles("tpl/explorerindex.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
+	templates["block"] = template.Must(template.ParseFiles("tpl/block.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
+	templates["tx"] = template.Must(template.ParseFiles("tpl/tx.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
+	templates["addr"] = template.Must(template.ParseFiles("tpl/addr.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	gdb, err := jdb.OpenDB()
-	if err != nil {
-	}
-	getCoins, err := gdb.ReadAll("coins")
-	if err != nil {
-		fmt.Println("Error", err)
-	}
-	var coins []interface{}
-	for _, coin := range getCoins {
-		var vcoin map[string]interface{}
-		if err := json.Unmarshal([]byte(coin), &vcoin); err != nil {
-			fmt.Println("Error", err)
-		}
-		coins = append(coins, vcoin)
-	}
-	data := mod.Home{
-		Coins: coins,
-		AMP:   amp.AMPS(),
+	coins := ser.GetCoins()
+	data := mod.HCL{
+		Coins:  coins,
+		AMPimg: amp.AMPI(),
 	}
 	renderTemplate(w, "index", "base", data)
+}
+func CoinsHandler(w http.ResponseWriter, r *http.Request) {
+	coins := ser.GetCoins()
+	data := mod.HCL{
+		Coins:  coins,
+		AMPimg: amp.AMPI(),
+	}
+	renderTemplate(w, "coins", "emptybase", data)
+}
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	data := "COINS"
+	renderTemplate(w, "home", "emptybase", data)
 }
 func CoinHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
@@ -59,8 +66,8 @@ func CoinHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	gCoin := vCoin.Coin
 	data := mod.CoinVw{
-		Coin: gCoin,
-		AMP:  amp.AMPS(),
+		Coin:   gCoin,
+		AMPimg: amp.AMPI(),
 	}
 	renderTemplate(w, "coin", "base", data)
 }

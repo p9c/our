@@ -1,65 +1,71 @@
 package ser
 
 import (
-	"comhttpus/jdb"
-	"comhttpus/mod"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/parallelcointeam/our/conf"
+	"github.com/parallelcointeam/our/jdb"
+	"github.com/parallelcointeam/our/mod"
 )
 
-func GetCoins(server string) (coins []mod.Coin) {
+var cf = conf.CsYsConf()
+var ComServer = cf.ComServer
+
+func GetCoins() (coins []mod.VCoin) {
 	gdb, err := jdb.OpenDB()
 	if err != nil {
 	}
 	gcoins, err := gdb.ReadAll("coins")
 	if err != nil {
 		fmt.Println("Read Coins Error", err)
-		getData(server)
+		getData()
 	}
 	for _, gc := range gcoins {
-		coin := mod.Coin{}
+		coin := mod.VCoin{}
 		if err := json.Unmarshal([]byte(gc), &coin); err != nil {
 			fmt.Println("Read Coin range Error", err)
 		}
+
 		coins = append(coins, coin)
 	}
 	return coins
 }
 
-func GetHomeCoins(server, static string) (coins []mod.HC) {
-	gdb, err := jdb.OpenDB()
-	if err != nil {
-	}
-	gcoins, err := gdb.ReadAll("coins")
-	if err != nil {
-		fmt.Println("Read Coins Error", err)
-		getData(server)
-	}
-	for _, gc := range gcoins {
-		gcoin := mod.Coin{}
-		coin := mod.HC{}
-		if err := json.Unmarshal([]byte(gc), &gcoin); err != nil {
-			fmt.Println("Read Coin range Error", err)
-		}
-		n := gcoin.Name
-		s := gcoin.Symbol
-		g := gcoin.Slug
-		// a := gcoin.Algo.A
-		// z := gcoin.Algo.Z
-		i := static + "/" + g + "/" + g + "32.png"
-		coin = mod.HC{n, s, g, i}
-		coins = append(coins, coin)
-	}
-	return coins
-}
+// func GetHomeCoins() (coins []mod.HC) {
+// 	gdb, err := jdb.OpenDB()
+// 	if err != nil {
+// 	}
+// 	gcoins, err := gdb.ReadAll("coins")
+// 	if err != nil {
+// 		fmt.Println("Read Coins Error", err)
+// 		getData()
+// 	}
+// 	for _, gc := range gcoins {
+// 		gcoin := mod.Coin{}
+// 		coin := mod.HC{}
+// 		if err := json.Unmarshal([]byte(gc), &gcoin); err != nil {
+// 			fmt.Println("Read Coin range Error", err)
+// 		}
+// 		n := gcoin.Name
+// 		s := gcoin.Symbol
+// 		g := gcoin.Slug
+// 		// a := gcoin.Algo.A
+// 		// z := gcoin.Algo.Z
+// 		i := gcoin.Imgs.Img32
+// 		coin = mod.HC{n, s, g, i}
+// 		coins = append(coins, coin)
+// 	}
+// 	return coins
+// }
 
-func getData(server string) {
+func getData() {
 	gdb, err := jdb.OpenDB()
 	if err != nil {
 	}
-	gamp, err := http.Get(server + "/api/amp")
+	gamp, err := http.Get(ComServer + "/api/amp")
 	if err != nil {
 		fmt.Println("AMP error", err)
 	}
@@ -77,7 +83,7 @@ func getData(server string) {
 			fmt.Println("Error", err)
 		}
 		if coin.Slug != gcoin.Slug {
-			gimg, err := http.Get(server + "/api/img/" + coin.Slug)
+			gimg, err := http.Get(ComServer + "/api/img/" + coin.Slug)
 			if err != nil {
 				fmt.Println("Img get error", err)
 			}

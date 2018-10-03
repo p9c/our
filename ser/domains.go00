@@ -1,7 +1,7 @@
 package services
 
 import (
-	"comhttpus/mod"
+	"github.com/parallelcointeam/ourmod"
 	"fmt"
 )
 

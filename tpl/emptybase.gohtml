@@ -1,4 +1,4 @@
-{{define "base"}}
+{{define "emptybase"}}
 <!doctype html>
 <html ⚡>
 <head>
@@ -37,28 +37,8 @@
        {{template "style.gohtml" .}}
     </style>
 </head>
-<body class="{{template "bodyclass" .}}">
-<div class="scs">
-<div class="scr hds">
-<header class="header container panel bg-gray pt-2 pb-2">
-  <div class="columns panel-body">
-  <div class="column col-12">
-<h1 class="h1"><a href="/">COMHTTP</a></h1>
-  </div>
-</div>
-</header>
-</div>
-<div class="scr mns">
-<main class="main container panel bg-gray pt-2 pb-2">
-    {{template "body" .}}
-</main>
-</div>
-<div class="scr fts">
-    <footer class="footer container panel bg-gray pt-2 pb-2">
-    FooTeR FooTeR FooTeR FooTeR FooTeR FooTeR 
-    </footer>
-    </div>
- </div>
+<body {{template "bodyclass" .}}>
+{{template "data" .}}
 </body>
 </html>
 {{end}}

@@ -13,19 +13,18 @@
 }
 
 html, body {
-} 
-
-a:hover{
-    text-decoration:none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  background: #2d2d2d;
 }
 body{
-  font-size: 0.9rem;
-    line-height: 1.38;
-    font-family: 'Ubuntu', sans-serif;
-    background:  var(--color-grey);
+  padding:1rem;
 }
 
-
+header.header{
+  margin-bottom:1rem;
+}
 nav.navbar {
   border-top: 4px solid #7FAF25;
   margin-bottom: 1rem;
@@ -105,6 +104,18 @@ flex-wrap:wrap;
 /*
 
 
+*{
+    box-sizing: border-box;
+}
+a:hover{
+    text-decoration:none;
+}
+body{
+    font-size: 1.6vh
+    font-family: 'Ubuntu', sans-serif;
+    background:  var(--color-grey);
+
+}
 
 sidebar {
     width: 250px;
@@ -241,35 +252,4 @@ flex-direction:column;
 
 .nobs{
   box-shadow:0 0 0 rgba(255,255,255,0);
-}
-
-/** HOME **/
-.home .scs{
-  display:flex;
-  padding: 2vh;
-  flex-direction:column;
-}
-.home .scr{
-  display:flex;
-}
-
-.home .hds{
-  height:8vh
-}
-.home .mns{
-  height:83vh
-}
-.home .fts{
-  height:5vh
-}
-
-
-
-header.header{
-  margin-bottom:1rem;
-}
-
-
-footer.footer{
-  margin-top:1rem;
 }
