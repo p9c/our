@@ -62,7 +62,7 @@ func ApiLast(w http.ResponseWriter, r *http.Request) {
 	coin := vars["subdomain"]
 	url := ComServer + "api/explorer/" + coin + "/last"
 	data, _ := getData(url)
-	//fmt.Println("blkblkblkblkblkblk", data)
+	fmt.Println("blkblkblkblkblkblk", data)
 	w.Write([]byte(data))
 }
 func ApiInfo(w http.ResponseWriter, r *http.Request) {
