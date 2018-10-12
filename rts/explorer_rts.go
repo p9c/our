@@ -17,21 +17,40 @@ import (
 // 	w.Write(response)
 // }
 
+func ExplorerHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	coin := vars["subdomain"]
+	gCoin := getCoin(coin)
+	data := mod.Explorer{
+		Coin:     gCoin,
+		AMPblock: amp.AMPB(),
+	}
+	renderTemplate(w, "explorerindex", "explorerbase", data)
+}
+
 func ViewBlock(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
+	coin := vars["subdomain"]
 	id := vars["id"]
+	gCoin := getCoin(coin)
 	data := mod.BlVw{
 		ID:       id,
+		Coin:     gCoin,
 		Block:    mod.Block{},
 		AMPblock: amp.AMPB(),
 	}
+	fmt.Println("datadatadatadatadata", data)
+
 	renderTemplate(w, "block", "explorerbase", data)
 }
 func ViewTx(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
+	coin := vars["subdomain"]
 	id := vars["id"]
+	gCoin := getCoin(coin)
 	data := mod.TxVw{
 		ID:       id,
+		Coin:     gCoin,
 		Tx:       mod.Tx{},
 		AMPblock: amp.AMPB(),
 	}
@@ -39,9 +58,12 @@ func ViewTx(w http.ResponseWriter, r *http.Request) {
 }
 func ViewAddr(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
+	coin := vars["subdomain"]
 	id := vars["id"]
+	gCoin := getCoin(coin)
 	data := mod.AdVw{
 		ID:       id,
+		Coin:     gCoin,
 		Addr:     mod.Addr{},
 		AMPblock: amp.AMPB(),
 	}
@@ -53,22 +75,22 @@ func ApiData(w http.ResponseWriter, r *http.Request) {
 	coin := vars["subdomain"]
 	id := vars["id"]
 	tp := vars["type"]
-	url := ComServer + "api/explorer/" + coin + "/" + tp + "/" + id
+	url := ComServer + "a/e/" + coin + "/" + tp + "/" + id
 	data, _ := getData(url)
 	w.Write([]byte(data))
 }
 func ApiLast(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["subdomain"]
-	url := ComServer + "api/explorer/" + coin + "/last"
+	url := ComServer + "a/e/" + coin + "/last"
 	data, _ := getData(url)
-	fmt.Println("blkblkblkblkblkblk", data)
+	//fmt.Println("blkblkblkblkblkblk", data)
 	w.Write([]byte(data))
 }
 func ApiInfo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["subdomain"]
-	url := ComServer + "api/explorer/" + coin + "/info"
+	url := ComServer + "a/e/" + coin + "/info"
 	data, _ := getData(url)
 	//fmt.Println("blkblkblkblkblkblk", data)
 	w.Write([]byte(data))
@@ -76,7 +98,7 @@ func ApiInfo(w http.ResponseWriter, r *http.Request) {
 func ApiMiningInfo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["subdomain"]
-	url := ComServer + "api/explorer/" + coin + "/gmi"
+	url := ComServer + "a/e/" + coin + "/gmi"
 	data, _ := getData(url)
 	//fmt.Println("blkblkblkblkblkblk", data)
 	w.Write([]byte(data))
@@ -84,19 +106,10 @@ func ApiMiningInfo(w http.ResponseWriter, r *http.Request) {
 func ApiRawPool(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["subdomain"]
-	url := ComServer + "api/explorer/" + coin + "/rmp"
+	url := ComServer + "a/e/" + coin + "/rmp"
 	data, _ := getData(url)
 	//fmt.Println("blkblkblkblkblkblk", data)
 	w.Write([]byte(data))
-}
-
-func ExplorerHandler(w http.ResponseWriter, r *http.Request) {
-	//tmpl := template.Must(template.ParseFiles(".html"))
-	data := mod.Index{
-		Blocks:   []mod.Block{},
-		AMPblock: amp.AMPB(),
-	}
-	renderTemplate(w, "explorerindex", "explorerbase", data)
 }
 
 func DoSearch(w http.ResponseWriter, r *http.Request) {
@@ -109,7 +122,7 @@ func DoSearch(w http.ResponseWriter, r *http.Request) {
 	tps := []string{"block", "blockhash", "tx", "addr"}
 	var tpt string
 	for _, tp := range tps {
-		url := ComServer + "api/explorer/" + coin + "/" + tp + "/" + search
+		url := ComServer + "a/e/" + coin + "/" + tp + "/" + search
 		fmt.Println("urlurlurlurlurlurlurlurlurlurlurl", url)
 		resp, err := http.Get(url)
 		if err != nil {

@@ -1,7 +1,7 @@
 {{define "head"}} <title>{{.Coin.Name}}</title> {{end}}
-
+{{define "bodyclass"}}{{.Coin.Slug}}{{end}}
+{{define "link"}}//{{.Coin.Slug}}.com-http.us/{{end}}
 {{define "body"}}
-{{.}}
 <div class="panel bg-gray">
   <div class="panel-header">
     <div class="panel-title">{{.Coin.Name}}</div>
@@ -97,26 +97,23 @@
   width="auto"
   height="800"
   layout="flex-item"
-  src="//{{.Coin.Slug}}.com-http.us:8985/api/news"
-  items= "query.results.item"
+  src="//{{.Coin.Slug}}.com-http.us:8985/a/news"
+  items= "news"
     class="m1">
   <template type="amp-mustache"
     id="coin-data">
     
     
     
-    
-
-
-                <div class="tile">
+                    <div class="tile">
                   <div class="tile-icon">
                     <figure class="avatar">
                       <amp-img layout="responsive" src="https://picturepan2.github.io/spectre/img/avatar-1.png" width="32" height="32" alt="Avatar" class="i-amphtml-element i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-layout"><i-amphtml-sizer style="padding-top: 100%;"></i-amphtml-sizer><img decoding="async" alt="Avatar" src="https://picturepan2.github.io/spectre/img/avatar-1.png" class="i-amphtml-fill-content i-amphtml-replaced-content"></amp-img>
                     </figure>
                   </div>
                   <div class="tile-content">
-                    <p class="tile-title">{{`{{{title}}}`}}<br>{{`{{{link}}}`}}<br>{{`{{{pubDate}}}`}}</p>
-                    <p class="tile-subtitle">{{`{{{description}}}`}}</p>
+                    <p class="tile-title">{{.AMP.News}}</p>
+                    <p class="tile-subtitle">{{`{{{pubDate}}}`}}</p>
                   </div>
                 </div>
                 

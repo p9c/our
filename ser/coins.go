@@ -28,7 +28,6 @@ func GetCoins() (coins []mod.VCoin) {
 		if err := json.Unmarshal([]byte(gc), &coin); err != nil {
 			fmt.Println("Read Coin range Error", err)
 		}
-
 		coins = append(coins, coin)
 	}
 	return coins
@@ -65,13 +64,16 @@ func getData() {
 	gdb, err := jdb.OpenDB()
 	if err != nil {
 	}
-	gamp, err := http.Get(ComServer + "/api/amp")
+	gamp, err := http.Get(ComServer + "a/a")
 	if err != nil {
-		fmt.Println("AMP error", err)
+		fmt.Println("AMP gampgampgampgamp", gamp)
 	}
+
+	fmt.Println("Read error", err)
 	defer gamp.Body.Close()
 	mapCoins, err := ioutil.ReadAll(gamp.Body)
 	var gcoins []mod.Coin
+	var coins []mod.CoinAmp
 	json.Unmarshal(mapCoins, &gcoins)
 	if err != nil {
 		fmt.Println("Read error", err)
@@ -83,7 +85,8 @@ func getData() {
 			fmt.Println("Error", err)
 		}
 		if coin.Slug != gcoin.Slug {
-			gimg, err := http.Get(ComServer + "/api/img/" + coin.Slug)
+			var acoin mod.CoinAmp
+			gimg, err := http.Get(ComServer + "a/img/" + coin.Slug)
 			if err != nil {
 				fmt.Println("Img get error", err)
 			}
@@ -92,17 +95,29 @@ func getData() {
 			var imgs mod.Imgs
 			json.Unmarshal(mapImgs, &imgs)
 			coin = mod.Coin{
-				Name:   coin.Name,
-				Symbol: coin.Symbol,
-				Slug:   coin.Slug,
-				Algo:   coin.Algo,
-				CData:  coin.CData,
-				Imgs:   imgs,
+				Name:     coin.Name,
+				Symbol:   coin.Symbol,
+				Slug:     coin.Slug,
+				Algo:     coin.Algo,
+				Explorer: coin.Explorer,
+				CData:    coin.CData,
+				Imgs:     imgs,
+			}
+			acoin = mod.CoinAmp{
+				Name:     coin.Name,
+				Symbol:   coin.Symbol,
+				Slug:     coin.Slug,
+				Algo:     coin.Algo,
+				Explorer: coin.Explorer,
 			}
 			cO := map[string]interface{}{"coin": coin}
 			gdb.Write("coins", coin.Slug, cO)
 			fmt.Println("Inserteded coin:", coin.Slug)
+			coins = append(coins, acoin)
 		}
+
+		cOs := map[string]interface{}{"coins": coins}
+		gdb.Write("index", "coins", cOs)
 	}
 }
 

@@ -8,8 +8,9 @@ type Coin struct {
 	Slug   string `json:"slug"`
 	Algo   string `json:"algo"`
 	//Algo   Algo   `json:"algo"`
-	Imgs  Imgs     `json:"imgs"`
-	CData CoinData `json:"cdata"`
+	Explorer bool     `json:"explorer"`
+	Imgs     Imgs     `json:"imgs"`
+	CData    CoinData `json:"cdata"`
 }
 type Imgs struct {
 	Img16  string `json:"img16"`
@@ -43,7 +44,7 @@ type CoinData struct {
 type HCL struct {
 	Coins []VCoin `json:"coins"`
 	//Algos []Algo        `json:"algos"`
-	AMPimg amp.AMPi `json:"amp"`
+	AMP amp.AMPc `json:"amp"`
 }
 type VCoin struct {
 	Coin Coin `json:"coin"`
@@ -52,5 +53,23 @@ type VCoin struct {
 type CoinVw struct {
 	Coin Coin `json:"coin"`
 	//Algos []Algo        `json:"algos"`
-	AMPimg amp.AMPi `json:"amp"`
+	AMP amp.AMPc `json:"amp"`
+}
+
+type CoinAmp struct {
+	Name     string `json:"name"`
+	Symbol   string `json:"symbol"`
+	Slug     string `json:"slug"`
+	Algo     string `json:"algo"`
+	Explorer bool   `json:"explorer"`
+}
+
+type News struct {
+	Title string `json:"title"`
+	Link  string `json:"link"`
+	Date  string `json:"date"`
+}
+
+type VNews struct {
+	News []News `json:"news"`
 }

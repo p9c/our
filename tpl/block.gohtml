@@ -1,7 +1,6 @@
-{{define "head"}} <title>Block {{.ID}}</title> {{end}}
+{{define "head"}} <title>{{.Coin.Name}} block {{.ID}}</title> {{end}}
 
 {{define "body"}}
-
 
 <div class="container">
   <div class="columns">
@@ -10,7 +9,7 @@
 <amp-list width="600"
 				  height="600"
 				  layout="responsive"
-				  src="http://localhost:8855/api/block/{{.ID}}"
+				  src="//{{.Coin}}.{{ template "host" .}}/a/block/{{.ID}}"
           items="b"
           single-item
 				  class="cgl">
@@ -32,7 +31,6 @@
 
 
 
-		
 			
 		<table class="table table-hover">
   <tbody>
@@ -58,13 +56,13 @@
 {{`{{#hash}}`}}
     <tr>
       <td ><strong>Hash</strong></td>
-       <td>{{.AMP.BlockHash}}</td>
+       <td>.AMP.BlockHash</td>
     </tr>
 {{`{{/hash}}`}}
 {{`{{#height}}`}}
     <tr>
       <td ><strong>Height</strong></td>
-       <td>{{.AMP.BlockHeight}}</td>
+       <td>.AMP.BlockHeight</td>
     </tr>
 {{`{{/height}}`}}
 {{`{{#merkleroot}}`}}
@@ -80,7 +78,7 @@
 {{`{{#nextblockhash}}`}}
     <tr>
       <td ><strong>Next block hash</strong></td>
-       <td>{{.AMP.NextBlockHash}}</td>
+       <td>.AMP.NextBlockHash</td>
     </tr>
 {{`{{/nextblockhash}}`}}
 {{`{{#nonce}}`}}
@@ -112,7 +110,7 @@
 {{`{{#previousblockhash}}`}}
     <tr>
       <td ><strong>Previous block hash</strong></td>
-              <td>{{.AMP.PrevBlockHash}}</td>
+              <td>.AMP.PrevBlockHash</td>
     </tr>
 {{`{{/previousblockhash}}`}}
 {{`{{#size}}`}}
@@ -138,7 +136,7 @@
     <tr>
       <td ><strong>TXs</strong></td>
        
-       <td>{{`{{#tx}}`}}{{.AMP.Tx}}<br>{{`{{/tx}}`}}</td>
+       <td>{{`{{#tx}}`}}.AMP.Tx<br>{{`{{/tx}}`}}</td>
     </tr>
 {{`{{/tx}}`}}
 
@@ -147,6 +145,10 @@
 </table>
 
 
+  
+				  
+
+		
   
 				  
 

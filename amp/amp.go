@@ -2,12 +2,16 @@ package amp
 
 import "html/template"
 
-type AMPi struct {
-	AMPImg template.HTML `json:"ampimg"`
+type AMPc struct {
+	Img  template.HTML `json:"ampimg"`
+	News template.HTML `json:"ampnews"`
 }
 
-func AMPI() AMPi {
-	amp := AMPi{AMPImg: template.HTML(`<a class="cglc" href="/coin/{{g}}"><amp-img width="32" height="32" alt="{{n}}" src="{{i}}"></amp-img><noscript><img src="{{i}}" width="32" height="32" alt="{{n}}"></noscript></a>`)}
+func AMPC() AMPc {
+	amp := AMPc{
+		Img:  template.HTML(`<a class="cglc" href="/coin/{{g}}"><amp-img width="32" height="32" alt="{{n}}" src="{{i}}"></amp-img><noscript><img src="{{i}}" width="32" height="32" alt="{{n}}"></noscript></a>`),
+		News: template.HTML(`<a href="{{link}}" target="_blank">{{title}}</a>`),
+	}
 	return amp
 }
 

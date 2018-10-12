@@ -1,5 +1,6 @@
-{{define "head"}} <title>ParallelCoin Blockchain Explorer</title> {{end}}
-
+{{define "head"}} <title>{{.Coin.Name}} Blockchain Explorer</title> {{end}}
+{{define "bodyclass"}}{{.Coin.Slug}}{{end}}
+{{define "link"}}//{{.Coin.Slug}}.com-http.us/explorer{{end}}
 {{define "body"}}
 
 
@@ -8,7 +9,7 @@
 
 <div class="panel bg-gray">
   <div class="panel-header">
-    <div class="panel-title">Last ParallelCoin Blocks</div>
+    <div class="panel-title">Last {{.Coin.Name}} Blocks</div>
   </div>
   <div class="panel-nav">
     <!-- navigation components: tabs, breadcrumbs or pagination -->
@@ -22,7 +23,7 @@
 <amp-list
 				  height="600"
 				  layout="fixed-height"
-				  src="http://localhost:8855/api/last"
+				  src="//{{.Coin.Slug}}.com-http.us:8985/a/last"
 		          items="b"
 				  class="cgl">
 <template type="amp-mustache">
@@ -33,7 +34,7 @@
       <div class="card-title">
         <span class="chip">Height</span>
         <div class="clearfix"></div>
-      {{.AMP.BlockHeight}}
+      {{.AMPblock.BlockHeight}}
       </div>
       <div class="card-subtitle text-gray">{{`{{time}}`}}</div>
   </div>
@@ -41,7 +42,7 @@
     <div class="column col-9 col-ml-auto">
       <span class="chip">Hash</span>
       <div class="clearfix"></div>
-      {{.AMP.BlockHash}}
+      {{.AMPblock.BlockHash}}
       <div class="divider"></div>
       <button class="btn btn-error">Difficulty: {{`{{difficulty}}`}}</button>
       <div class="docs-shape h2 bg-success pt-5 pb-3 text-center float-right">{{`{{confirmations}}`}}<sub class="h6">confirmations</sub>
@@ -51,7 +52,7 @@
      <ul class="menu nobs">
         <li class="divider color-dark" data-content="Transactions"></li>
       <!-- menu item standard -->
-        {{`{{#tx}}`}}<li class="menu-item">{{.AMP.Tx}}</li>{{`{{/tx}}`}}
+        {{`{{#tx}}`}}<li class="menu-item">{{.AMPblock.Tx}}</li>{{`{{/tx}}`}}
      </ul>
    </div>
 </div>
@@ -85,7 +86,7 @@
 <amp-list
 				  height="300"
 				  layout="fixed-height"
-				  src="http://localhost:8855/api/mining"
+				  src="//{{.Coin.Slug}}.com-http.us:8985/a/mining"
 		          items="m"
               single-item
 				  class="cgl">
@@ -122,11 +123,11 @@
 <amp-list
 				  height="200"
 				  layout="fixed-height"
-				  src="http://localhost:8855/api/rawpool"
+				  src="//{{.Coin.Slug}}.com-http.us:8985/a/rawpool"
 		          items="r"
 				  class="cgl">
 <template type="amp-mustache">
-                    <li class="menu-item">{{.AMP.Tx}}</li>
+                    <li class="menu-item">{{.AMPblock.Tx}}</li>
 
       
   </template>

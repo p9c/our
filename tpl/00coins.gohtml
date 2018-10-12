@@ -1,10 +1,7 @@
-{{define "head"}} <title>COMHTTP</title> {{end}}
-
-{{define "bodyclass"}} coins{{end}}
-{{define "link"}}//com-http.us/coins/{{end}}
-
-{{define "body"}}
-  <div class="hcoins"> 
+{{define "head"}} <title>COMHTTP - CRYPTO - COINS</title> {{end}}
+{{define "bodyclass"}} home_coins{{end}}
+{{define "data"}}
+  <div class="container"> 
 {{range .Coins}}
     <a href="http://{{.Coin.Slug}}.com-http.us" class="hcoin {{.Coin.Algo}}" data="{{.Coin.Algo}}">    
       <amp-img src="data:image/png;base64,{{.Coin.Imgs.Img32}}"
@@ -19,20 +16,3 @@
     {{end}}
 </div>
 {{end}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

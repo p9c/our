@@ -22,25 +22,28 @@ type Addr struct {
 	Addr string `json:"addr"`
 }
 
-type Index struct {
-	Blocks   []Block  `json:"b"`
+type Explorer struct {
+	Coin     Coin     `json:"coin"`
 	AMPblock amp.AMPb `json:"amp"`
 }
 
 type BlVw struct {
 	ID       string   `json:"id"`
+	Coin     Coin     `json:"coin"`
 	Block    Block    `json:"block"`
 	AMPblock amp.AMPb `json:"amp"`
 }
 
 type TxVw struct {
 	ID       string   `json:"id"`
+	Coin     Coin     `json:"coin"`
 	Tx       Tx       `json:"tx"`
 	AMPblock amp.AMPb `json:"amp"`
 }
 
 type AdVw struct {
 	ID       string   `json:"id"`
+	Coin     Coin     `json:"coin"`
 	Addr     Addr     `json:"addr"`
 	AMPblock amp.AMPb `json:"amp"`
 }

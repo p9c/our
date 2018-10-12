@@ -1,7 +1,7 @@
-{{define "head"}} <title>Address {{.Data}}</title> {{end}}
-
+{{define "head"}} <title>{{.Coin.Name}} Blockchain Explorer - Address - {{.ID}}</title> {{end}}
+{{define "bodyclass"}}{{.Coin.Slug}}{{end}}
+{{define "link"}}//{{.Coin.Slug}}.com-http.us/addr/{{.ID}}{{end}}
 {{define "body"}}
-
 
 <div class="container">
   <div class="columns">
