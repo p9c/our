@@ -28,6 +28,8 @@ func init() {
 	templates["block"] = template.Must(template.ParseFiles("tpl/block.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
 	templates["tx"] = template.Must(template.ParseFiles("tpl/tx.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
 	templates["addr"] = template.Must(template.ParseFiles("tpl/addr.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
+
+	templates["cmc"] = template.Must(template.ParseFiles("tpl/frame/cmc.gohtml", "tpl/basehtml.gohtml"))
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {

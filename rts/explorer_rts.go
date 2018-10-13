@@ -22,8 +22,8 @@ func ExplorerHandler(w http.ResponseWriter, r *http.Request) {
 	coin := vars["subdomain"]
 	gCoin := getCoin(coin)
 	data := mod.Explorer{
-		Coin:     gCoin,
-		AMPblock: amp.AMPB(),
+		Coin: gCoin,
+		AMP:  amp.AMPB(),
 	}
 	renderTemplate(w, "explorerindex", "explorerbase", data)
 }
@@ -34,12 +34,12 @@ func ViewBlock(w http.ResponseWriter, r *http.Request) {
 	id := vars["id"]
 	gCoin := getCoin(coin)
 	data := mod.BlVw{
-		ID:       id,
-		Coin:     gCoin,
-		Block:    mod.Block{},
-		AMPblock: amp.AMPB(),
+		ID:    id,
+		Coin:  gCoin,
+		Block: mod.Block{},
+		AMP:   amp.AMPB(),
 	}
-	fmt.Println("datadatadatadatadata", data)
+	//fmt.Println("datadatadatadatadata", data)
 
 	renderTemplate(w, "block", "explorerbase", data)
 }
@@ -49,10 +49,10 @@ func ViewTx(w http.ResponseWriter, r *http.Request) {
 	id := vars["id"]
 	gCoin := getCoin(coin)
 	data := mod.TxVw{
-		ID:       id,
-		Coin:     gCoin,
-		Tx:       mod.Tx{},
-		AMPblock: amp.AMPB(),
+		ID:   id,
+		Coin: gCoin,
+		Tx:   mod.Tx{},
+		AMP:  amp.AMPB(),
 	}
 	renderTemplate(w, "tx", "explorerbase", data)
 }
@@ -62,10 +62,10 @@ func ViewAddr(w http.ResponseWriter, r *http.Request) {
 	id := vars["id"]
 	gCoin := getCoin(coin)
 	data := mod.AdVw{
-		ID:       id,
-		Coin:     gCoin,
-		Addr:     mod.Addr{},
-		AMPblock: amp.AMPB(),
+		ID:   id,
+		Coin: gCoin,
+		Addr: mod.Addr{},
+		AMP:  amp.AMPB(),
 	}
 	renderTemplate(w, "addr", "explorerbase", data)
 }

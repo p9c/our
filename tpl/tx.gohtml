@@ -1,5 +1,6 @@
 {{define "head"}} <title>Transaction {{.ID}}</title> {{end}}
-
+{{define "bodyclass"}}{{.Coin.Slug}}{{end}}
+{{define "link"}}//{{.Coin.Slug}}.com-http.us/{{end}}
 {{define "body"}}
 
 
@@ -10,7 +11,7 @@
 <amp-list width="600"
 				  height="600"
 				  layout="responsive"
-				  src="http://localhost:8855/a/tx/{{.ID}}"
+          src="//{{.Coin.Slug}}.{{ template "host" .}}/a/tx/{{.ID}}"
           items="t"
           single-item
 				  class="cgl">

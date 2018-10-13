@@ -48,13 +48,15 @@ func main() {
 	r.Host("{subdomain}.com-http.us").Path("/tx/{id}").HandlerFunc(rts.ViewTx).Name("tx")
 	r.Host("{subdomain}.com-http.us").Path("/addr/{id}").HandlerFunc(rts.ViewAddr).Name("addr")
 	//api
-	r.Host("{subdomain}.com-http.us").Path("/a/news").HandlerFunc(rts.CoinNewsHandler).Name("news")
 	r.Host("{subdomain}.com-http.us").Path("/a/last").HandlerFunc(rts.ApiLast).Name("last")
 	r.Host("{subdomain}.com-http.us").Path("/a/info").HandlerFunc(rts.ApiInfo).Name("info")
 	r.Host("{subdomain}.com-http.us").Path("/a/mining").HandlerFunc(rts.ApiMiningInfo).Name("mining")
 	r.Host("{subdomain}.com-http.us").Path("/a/rawpool").HandlerFunc(rts.ApiRawPool).Name("rawpool")
 	r.Host("{subdomain}.com-http.us").Path("/a/search").HandlerFunc(rts.DoSearch).Name("search")
 	r.Host("{subdomain}.com-http.us").Path("/a/{type}/{id}").HandlerFunc(rts.ApiData).Name("coin")
+
+	r.Host("{subdomain}.com-http.us").Path("/a/news").HandlerFunc(rts.CoinNewsHandler).Name("news")
+	r.Host("{subdomain}.com-http.us").Path("/f/cmc").HandlerFunc(rts.CMCHandler).Name("cmc")
 
 	log.Fatal(http.ListenAndServe(":8985", handlers.CORS()(r)))
 }
