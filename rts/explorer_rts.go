@@ -1,6 +1,7 @@
 package rts
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -28,7 +29,7 @@ func ExplorerHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "explorerindex", "explorerbase", data)
 }
 
-func ViewBlock(w http.ResponseWriter, r *http.Request) {
+func ViewBlockHeight(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["subdomain"]
 	id := vars["id"]
@@ -41,7 +42,22 @@ func ViewBlock(w http.ResponseWriter, r *http.Request) {
 	}
 	//fmt.Println("datadatadatadatadata", data)
 
-	renderTemplate(w, "block", "explorerbase", data)
+	renderTemplate(w, "blockheight", "explorerbase", data)
+}
+func ViewBlockHash(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	coin := vars["subdomain"]
+	id := vars["id"]
+	gCoin := getCoin(coin)
+	data := mod.BlVw{
+		ID:    id,
+		Coin:  gCoin,
+		Block: mod.Block{},
+		AMP:   amp.AMPB(),
+	}
+	//fmt.Println("datadatadatadatadata", data)
+
+	renderTemplate(w, "blockhash", "explorerbase", data)
 }
 func ViewTx(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
@@ -120,19 +136,19 @@ func DoSearch(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("searchsearchsearchsearchsearchsearchsearchsearch", search)
 
 	tps := []string{"block", "blockhash", "tx", "addr"}
-	var tpt string
+	var tpt = "noresults"
 	for _, tp := range tps {
 		url := ComServer + "a/e/" + coin + "/" + tp + "/" + search
 		fmt.Println("urlurlurlurlurlurlurlurlurlurlurl", url)
-		resp, err := http.Get(url)
+		resp, err := getData(url)
+		var search map[string]interface{}
+		json.Unmarshal(resp, &search)
 		if err != nil {
-			fmt.Println("___________________________________")
-			print(err.Error())
-			fmt.Println("___________________________________")
-		} else {
-			fmt.Println("___________________________________")
-			print(string(resp.StatusCode) + resp.Status)
-			fmt.Println("___________________________________")
+			fmt.Println("Read error", err)
+		}
+		if search["d"] != nil {
+			tpt = tp
+
 		}
 
 	}

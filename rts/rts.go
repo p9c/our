@@ -25,7 +25,8 @@ func init() {
 	templates["home"] = template.Must(template.ParseFiles("tpl/home.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/base.gohtml"))
 	templates["coin"] = template.Must(template.ParseFiles("tpl/coin.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/base.gohtml"))
 	templates["explorerindex"] = template.Must(template.ParseFiles("tpl/explorerindex.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
-	templates["block"] = template.Must(template.ParseFiles("tpl/block.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
+	templates["blockheight"] = template.Must(template.ParseFiles("tpl/block.gohtml", "tpl/block_height.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
+	templates["blockhash"] = template.Must(template.ParseFiles("tpl/block.gohtml", "tpl/block_hash.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
 	templates["tx"] = template.Must(template.ParseFiles("tpl/tx.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
 	templates["addr"] = template.Must(template.ParseFiles("tpl/addr.gohtml", "tpl/spectre.gohtml", "tpl/style.gohtml", "tpl/explorerbase.gohtml"))
 

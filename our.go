@@ -44,19 +44,26 @@ func main() {
 	r.Host("com-http.us").Path("/home").HandlerFunc(rts.HomeHandler).Name("home")
 	r.Host("{subdomain}.com-http.us").Path("/").HandlerFunc(rts.CoinHandler).Name("coin")
 	r.Host("{subdomain}.com-http.us").Path("/explorer").HandlerFunc(rts.ExplorerHandler).Name("explorer")
-	r.Host("{subdomain}.com-http.us").Path("/block/{id}").HandlerFunc(rts.ViewBlock).Name("block")
+	r.Host("{subdomain}.com-http.us").Path("/block/{id}").HandlerFunc(rts.ViewBlockHeight).Name("block")
+	r.Host("{subdomain}.com-http.us").Path("/blockhash/{id}").HandlerFunc(rts.ViewBlockHash).Name("blockhash")
 	r.Host("{subdomain}.com-http.us").Path("/tx/{id}").HandlerFunc(rts.ViewTx).Name("tx")
 	r.Host("{subdomain}.com-http.us").Path("/addr/{id}").HandlerFunc(rts.ViewAddr).Name("addr")
+
+	r.Host("{subdomain}.com-http.us").Path("/search").HandlerFunc(rts.DoSearch).Name("search")
 	//api
 	r.Host("{subdomain}.com-http.us").Path("/a/last").HandlerFunc(rts.ApiLast).Name("last")
 	r.Host("{subdomain}.com-http.us").Path("/a/info").HandlerFunc(rts.ApiInfo).Name("info")
 	r.Host("{subdomain}.com-http.us").Path("/a/mining").HandlerFunc(rts.ApiMiningInfo).Name("mining")
 	r.Host("{subdomain}.com-http.us").Path("/a/rawpool").HandlerFunc(rts.ApiRawPool).Name("rawpool")
-	r.Host("{subdomain}.com-http.us").Path("/a/search").HandlerFunc(rts.DoSearch).Name("search")
+
 	r.Host("{subdomain}.com-http.us").Path("/a/{type}/{id}").HandlerFunc(rts.ApiData).Name("coin")
 
 	r.Host("{subdomain}.com-http.us").Path("/a/news").HandlerFunc(rts.CoinNewsHandler).Name("news")
 	r.Host("{subdomain}.com-http.us").Path("/f/cmc").HandlerFunc(rts.CMCHandler).Name("cmc")
+
+	r.Host("i.com-http.us").Path("/{coin}/{size}").HandlerFunc(rts.ImgHandler).Name("img")
+
+	r.Host("com-http.us").Path("/cert").HandlerFunc(rts.CertHandler).Name("cert")
 
 	log.Fatal(http.ListenAndServe(":8985", handlers.CORS()(r)))
 }

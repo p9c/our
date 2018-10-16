@@ -1,6 +1,7 @@
 package rts
 
 import (
+	"encoding/base64"
 	"fmt"
 	"net/http"
 
@@ -36,4 +37,37 @@ func CoinHandler(w http.ResponseWriter, r *http.Request) {
 		AMP:  amp.AMPC(),
 	}
 	renderTemplate(w, "coin", "base", data)
+}
+
+func ImgHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	coin := vars["coin"]
+	size := vars["size"]
+	gdb, err := jdb.OpenDB()
+	if err != nil {
+	}
+	vCoin := mod.VCoin{}
+	if err := gdb.Read("coins", coin, &vCoin); err != nil {
+		fmt.Println("Error", err)
+	}
+	var img string
+	switch size {
+	case "16":
+		img = vCoin.Coin.Imgs.Img16
+	case "32":
+		img = vCoin.Coin.Imgs.Img32
+	case "64":
+		img = vCoin.Coin.Imgs.Img64
+	case "128":
+		img = vCoin.Coin.Imgs.Img128
+	case "256":
+		img = vCoin.Coin.Imgs.Img256
+	}
+	encoded, _ := base64.StdEncoding.DecodeString(img)
+	w.Write(encoded)
+}
+
+func CertHandler(w http.ResponseWriter, r *http.Request) {
+	ser.GetNames()
+
 }

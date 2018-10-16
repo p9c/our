@@ -61,5 +61,6 @@ type CoinAmp struct {
 	Symbol   string `json:"symbol"`
 	Slug     string `json:"slug"`
 	Algo     string `json:"algo"`
+	Img      string `json:"img"`
 	Explorer bool   `json:"explorer"`
 }

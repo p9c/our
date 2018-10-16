@@ -6,44 +6,58 @@
 {{define "body"}}
 
   <div class="exc"> 
-{{range .Coins}}{{ if .Coin.Explorer}}
-    <a href="http://{{.Coin.Slug}}.com-http.us" class="hcoin {{.Coin.Algo}}" data="{{.Coin.Algo}}">
-      <amp-img src="data:image/png;base64,{{.Coin.Imgs.Img64}}"
+    <div class="columns">
+  {{range .Coins}}{{ if .Coin.Explorer}}
+    <div class="column col-3">
+    <a href="http://{{.Coin.Slug}}.com-http.us:8985" class="hcoin {{.Coin.Algo}}" >
+      <amp-img src="data:image/png;base64,{{.Coin.Imgs.Img16}}"
     alt="{{ .Coin.Name}}"
-    width="64"
-    height="64"
+    width="16"
+    height="16"
     layout="fixed"
     class="m1">
-        <noscript><img src="data:image/png;base64,{{.Coin.Imgs.Img64}}" width="64" height="64" alt="{{.Coin.Name}}"></noscript>
+        <noscript><img src="data:image/png;base64,{{.Coin.Imgs.Img32}}" width="32" height="32" alt="{{.Coin.Name}}"></noscript>
       </amp-img>
       <h3>{{ .Coin.Name}}</h3>
     </a>
+    
+<amp-list
+				  height="300"
+				  layout="fixed-height"
+				  src="//{{.Coin.Slug}}.com-http.us:8985/a/mining"
+		          items="d"
+              single-item
+				  class="cgl">
+<template type="amp-mustache">
+    <p><strong>Blocks:</strong>{{`{{blocks}}`}}</p>
+    <p><strong>Difficulty:</strong>{{`{{difficulty}}`}}</p>
+    <p><strong>MemPool Tx:</strong>{{`{{pooledtx}}`}}</p>
+    
+            
+      
+
+            
+  </template>
+		</amp-list>
+</div>
+
+
     {{end}}{{end}}
+</div>
 </div>
 
 
 
   <div class="hcoins"> 
-  <div class="columns">
-<div class="column col-6 col-xs-12">
 <amp-list 
   id="coin-data"
-  width="1000"
-  height="800"
   layout="flex-item"
   src="//com-http.us:8985/json/index/coins.json"
   items= "coins"
   class="m1">
   <template type="amp-mustache"  id="coin-data">
     
-
-    <dl>
-    <dt>Name</dt><dd>{{`{{name}}`}}</dd>
-    <dt>IMG</dt><dd>{{`{{img}}`}}</dd>
-    
 {{.AMP.Img}}
-
-    </dl>
     
 
   </template>

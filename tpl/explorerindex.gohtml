@@ -24,7 +24,7 @@
 				  height="600"
 				  layout="fixed-height"
 				  src="//{{.Coin.Slug}}.com-http.us:8985/a/last"
-		          items="b"
+		          items="d"
 				  class="cgl">
 <template type="amp-mustache">
 <div class="card">
@@ -34,7 +34,7 @@
       <div class="card-title">
         <span class="chip">Height</span>
         <div class="clearfix"></div>
-      {{.AMPblock.BlockHeight}}
+      {{.AMP.BlockHeight}}
       </div>
       <div class="card-subtitle text-gray">{{`{{time}}`}}</div>
   </div>
@@ -42,7 +42,7 @@
     <div class="column col-9 col-ml-auto">
       <span class="chip">Hash</span>
       <div class="clearfix"></div>
-      {{.AMPblock.BlockHash}}
+      {{.AMP.BlockHash}}
       <div class="divider"></div>
       <button class="btn btn-error">Difficulty: {{`{{difficulty}}`}}</button>
       <div class="docs-shape h2 bg-success pt-5 pb-3 text-center float-right">{{`{{confirmations}}`}}<sub class="h6">confirmations</sub>
@@ -52,7 +52,7 @@
      <ul class="menu nobs">
         <li class="divider color-dark" data-content="Transactions"></li>
       <!-- menu item standard -->
-        {{`{{#tx}}`}}<li class="menu-item">{{.AMPblock.Tx}}</li>{{`{{/tx}}`}}
+        {{`{{#tx}}`}}<li class="menu-item">{{.AMP.Tx}}</li>{{`{{/tx}}`}}
      </ul>
    </div>
 </div>
@@ -87,7 +87,7 @@
 				  height="300"
 				  layout="fixed-height"
 				  src="//{{.Coin.Slug}}.com-http.us:8985/a/mining"
-		          items="m"
+		          items="d"
               single-item
 				  class="cgl">
 <template type="amp-mustache">
@@ -124,10 +124,10 @@
 				  height="200"
 				  layout="fixed-height"
 				  src="//{{.Coin.Slug}}.com-http.us:8985/a/rawpool"
-		          items="r"
+		          items="d"
 				  class="cgl">
 <template type="amp-mustache">
-                    <li class="menu-item">{{.AMPblock.Tx}}</li>
+                    <li class="menu-item">{{.AMP.Tx}}</li>
 
       
   </template>

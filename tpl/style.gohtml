@@ -249,7 +249,7 @@ flex-direction:column;
 /** HOME **/
 .home .scs{
   display:flex;
-  padding: 2vh;
+  padding: 1vh;
   flex-direction:column;
 }
 .home .scr{
@@ -257,20 +257,53 @@ flex-direction:column;
 }
 
 .home .hds{
-  height:12vh
-}
-.home .mns{
-  height:75vh;
-  margin: 2vh 0;
-}
-.home .fts{
   height:5vh
 }
+.home .mns{
+  height:88vh;
+  margin: 1vh 0;
+}
+.home .fts{
+  height:3vh
+}
 
+
+.main{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: flex-start; /* align items in Main Axis */
+    align-items: stretch; /* align items in Cross Axis */
+    align-content: stretch; /* Extra space in Cross Axis */
+
+    }
 .hcoins{
+  position:relative;
   display:flex;
-  
+    flex-wrap: wrap;
+    justify-content: center;
+    flex:1;
+    overflow:overlay;
+}
+
+.hcoins .i-amphtml-fill-content{
+  display:flex;
     overflow-y: auto;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+
+.cglc{
+  display:flex;
+  padding:0.3rem;
+  border-radius:3px;
+}
+
+.cglc:hover{
+background-color:#303030;
+}
+footer.footer{
+  vertical-align:middle;
+  font-size:1.1vh;
 }

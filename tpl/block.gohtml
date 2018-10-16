@@ -10,8 +10,8 @@
 <amp-list width="600"
 				  height="600"
 				  layout="responsive"
-				  src="//{{.Coin.Slug}}.{{ template "host" .}}/a/block/{{.ID}}"
-          items="b"
+    {{template "block" .}}
+          items="d"
           single-item
 				  class="cgl">
 		  <template type="amp-mustache">
