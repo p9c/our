@@ -24,15 +24,10 @@ import (
 	"github.com/robfig/cron"
 )
 
-const (
-	ComServer = "http://127.0.0.1:9998"
-)
-
 func main() {
 	cr := cron.New()
 	cr.AddFunc("@every 15s", func() {
 		fmt.Println("Radi kron")
-		//ser.GetData(ComServer)
 	})
 	cr.Start()
 	jsonHandler := http.FileServer(http.Dir("./JDB/"))
@@ -65,5 +60,11 @@ func main() {
 
 	r.Host("com-http.us").Path("/cert").HandlerFunc(rts.CertHandler).Name("cert")
 
-	log.Fatal(http.ListenAndServe(":8985", handlers.CORS()(r)))
+	go log.Fatal(http.ListenAndServe(":80", handlers.CORS()(r)))
+
+	// err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
+	// if err != nil {
+	// 	go log.Fatal("ListenAndServe: ", err)
+	// }
+
 }

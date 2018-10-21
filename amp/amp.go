@@ -9,7 +9,8 @@ type AMPc struct {
 
 func AMPC() AMPc {
 	amp := AMPc{
-		Img:  template.HTML(`<a class="cglc" href="//{{slug}}.com-http.us:8985"><amp-img width="32" height="32" alt="{{name}}" src="{{img}}"></amp-img><noscript><img src="{{img}}" width="32" height="32" alt="{{name}}"></noscript></a>`),
+		//Img:  template.HTML(`<a class="cglc" href="//{{slug}}.com-http.us"><amp-img width="32" height="32" alt="{{name}}" src="{{img}}"></amp-img><noscript><img src="{{img}}" width="32" height="32" alt="{{name}}"></noscript></a>`),
+		Img:  template.HTML(`<a class="cglc" href="//{{slug}}.com-http.us">{{symbol}}<amp-img width="32" height="32" alt="{{name}}" src="{{img}}"></amp-img></a>`),
 		News: template.HTML(`<a href="{{link}}" target="_blank">{{title}}</a>`),
 	}
 	return amp

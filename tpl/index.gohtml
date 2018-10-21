@@ -1,15 +1,18 @@
 {{define "head"}} <title>COMHTTP</title> {{end}}
-
 {{define "bodyclass"}} home{{end}}
 {{define "link"}}//com-http.us/{{end}}
-
 {{define "body"}}
 
+
   <div class="exc"> 
+          <button class="ampstart-btn caps m1" on="tap:AMP.setState({sts: {st: 'coins'}})">
+      Set to Coins
+    </button>
+
     <div class="columns">
   {{range .Coins}}{{ if .Coin.Explorer}}
     <div class="column col-3">
-    <a href="http://{{.Coin.Slug}}.com-http.us:8985" class="hcoin {{.Coin.Algo}}" >
+    <a href="https://{{.Coin.Slug}}.com-http.us" class="hcoin {{.Coin.Algo}}" >
       <amp-img src="data:image/png;base64,{{.Coin.Imgs.Img16}}"
     alt="{{ .Coin.Name}}"
     width="16"
@@ -24,7 +27,7 @@
 <amp-list
 				  height="300"
 				  layout="fixed-height"
-				  src="//{{.Coin.Slug}}.com-http.us:8985/a/mining"
+				  src="//{{.Coin.Slug}}.com-http.us/a/mining"
 		          items="d"
               single-item
 				  class="cgl">
@@ -49,23 +52,39 @@
 
 
   <div class="hcoins"> 
-<amp-list 
-  id="coin-data"
-  layout="flex-item"
-  src="//com-http.us:8985/json/index/coins.json"
-  items= "coins"
-  class="m1">
-  <template type="amp-mustache"  id="coin-data">
-    
-{{.AMP.Img}}
-    
 
-  </template>
-</amp-list>
+
+
+        <amp-state id="sts">
+      <script type="application/json">
+      { "st" : "home",
+        "home": {
+          "iframeUrl": "https://com-http.us/home"
+        },
+         "coins": {
+          "iframeUrl": "https://com-http.us/coins"
+        }
+      }
+      </script>
+    </amp-state>
+
+  <amp-iframe id="amp-iframe"
+  title="Coins"
+  width="500"
+  height="281"
+  layout="responsive"
+  sandbox="allow-scripts allow-same-origin allow-popups"
+  frameborder="0"
+  src="https://com-http.us/home"
+  [src]="sts[sts.st].iframeUrl">
+  </amp-iframe>
+  </div>
 
 
 </div>
 {{end}}
+
+
 
 
 

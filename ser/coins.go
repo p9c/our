@@ -103,7 +103,7 @@ func getData() {
 				CData:    coin.CData,
 				Imgs:     imgs,
 			}
-			img := "//i.com-http.us:8985/" + coin.Slug + "/32"
+			img := "//i.com-http.us/" + coin.Slug + "/32"
 			acoin = mod.CoinAmp{
 				Name:     coin.Name,
 				Symbol:   coin.Symbol,

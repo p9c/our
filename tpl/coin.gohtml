@@ -24,7 +24,7 @@
 
 		<header class="page-header">
 <h1 class="page-title">{{.Coin.Name}}</h1>
-<div class="taxonomy-description"><a href="//{{.Coin.Slug}}.com-http.us:8985/explorer">{{.Coin.Name}} Blockchain Explorer</a></div>
+<div class="taxonomy-description"><a href="//{{.Coin.Slug}}.com-http.us/explorer">{{.Coin.Name}} Blockchain Explorer</a></div>
 		</header><!-- .page-header -->
 
 
@@ -51,7 +51,7 @@
   width="auto"
   height="800"
   layout="flex-item"
-  src="//com-http.us:8985/json/coins/{{.Coin.Slug}}.json"
+  src="//com-http.us/json/coins/{{.Coin.Slug}}.json"
   items= "coin"
   single-item
   class="m1">
@@ -97,7 +97,7 @@
   width="auto"
   height="800"
   layout="flex-item"
-  src="//{{.Coin.Slug}}.com-http.us:8985/a/news"
+  src="//{{.Coin.Slug}}.com-http.us/a/news"
   items= "news"
     class="m1">
   <template type="amp-mustache"
