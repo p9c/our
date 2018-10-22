@@ -1,13 +1,14 @@
 {{define "head"}} <title>{{.Coin.Name}} Blockchain Explorer</title> {{end}}
 {{define "bodyclass"}}{{.Coin.Slug}}{{end}}
 {{define "link"}}//{{.Coin.Slug}}.com-http.us/explorer{{end}}
+{{define "cnm"}}<a href="{{template "link" .}}"> Blockchain Explorer</a>{{end}}
+
 {{define "body"}}
 
 
   <div class="columns panel-body">
-  <div class="column col-9">
+  <div class="column col-9 panel bg-gray">
 
-<div class="panel bg-gray">
   <div class="panel-header">
     <div class="panel-title">Last {{.Coin.Name}} Blocks</div>
   </div>
@@ -65,7 +66,6 @@
 </div>
 
 </div>
-</div>
 
 
 
@@ -80,31 +80,18 @@
   <div class="panel-header">
     <div class="panel-title">Info</div>
   </div>
-  <div class="panel-body">
   
-<div class="container">
-<amp-list
-				  height="300"
-				  layout="fixed-height"
-				  src="//{{.Coin.Slug}}.com-http.us/a/mining"
-		          items="d"
-              single-item
-				  class="cgl">
-<template type="amp-mustache">
-            <button class="btn btn-error">Blocks: {{`{{blocks}}`}}</button>
-
-      <button class="btn btn-error">Difficulty: {{`{{difficulty}}`}}</button>
-
-      <button class="btn btn-error">Current Block Size: {{`{{currentblocksize}}`}}</button>
-
-      <button class="btn btn-error">Current Block Tx: {{`{{currentblocktx}}`}}</button>
-
-      <button class="btn btn-error">Difficulty Scrypt: {{`{{difficulty_scrypt}}`}}</button>
-
-      <button class="btn btn-error">Difficulty SHA256d: {{`{{difficulty_sha256d}}`}}</button>
-      
-  </template>
-		</amp-list>
+  <div class="panel-body">
+  <div class="container">
+<amp-list  height="300" layout="fixed-height" src="//{{.Coin.Slug}}.com-http.us/a/mining" items="d" single-item class="cgl">
+<template type="amp-mustache"><table><tbody>
+<tr><td>Blocks:</td><td>{{`{{blocks}}`}}</td></tr>
+<tr><td>Difficulty:</td><td>{{`{{difficulty}}`}}</td></tr>
+<tr><td>urrent Block Size::</td><td>{{`{{currentblocksize}}`}}</td></tr>
+<tr><td>Current Block Tx:</td><td>{{`{{currentblocktx}}`}}</td></tr>
+<tr><td>Difficulty Scrypt:</td><td>{{`{{difficulty_scrypt}}`}}</td> </tr>
+<tr><td>Difficulty SHA256d:</td><td>{{`{{difficulty_sha256d}}`}}</td></tr>
+</tbody></table></template></amp-list>
 </div>
 
 </div>
@@ -117,22 +104,10 @@
     <div class="panel-title">Latest Transactions</div>
   </div>
   <div class="panel-body">
-    <!-- contents -->
-  
-<div class="container">
-<amp-list
-				  height="200"
-				  layout="fixed-height"
-				  src="//{{.Coin.Slug}}.com-http.us/a/rawpool"
-		          items="d"
-				  class="cgl">
-<template type="amp-mustache">
-                    <li class="menu-item">{{.AMP.Tx}}</li>
-
       
-  </template>
-		</amp-list>
-</div>
+
+<amp-list height="200" layout="fixed-height" src="//{{.Coin.Slug}}.com-http.us/a/rawpool" items="d" class="cgl"><template type="amp-mustache"><li class="menu-item">{{.AMP.Tx}}</li></template></amp-list>
+
 
 </div>
 </div>

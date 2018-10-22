@@ -44,7 +44,7 @@ type CoinData struct {
 type HCL struct {
 	Coins []VCoin `json:"coins"`
 	//Algos []Algo        `json:"algos"`
-	AMP amp.AMPc `json:"amp"`
+	AMP amp.AMP `json:"amp"`
 }
 type VCoin struct {
 	Coin Coin `json:"coin"`
@@ -53,7 +53,7 @@ type VCoin struct {
 type CoinVw struct {
 	Coin Coin `json:"coin"`
 	//Algos []Algo        `json:"algos"`
-	AMP amp.AMPc `json:"amp"`
+	AMP amp.AMP `json:"amp"`
 }
 
 type CoinAmp struct {

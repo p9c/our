@@ -1,0 +1,10 @@
+{{define "title"}} <title>COMHTTP</title> {{end}}
+{{define "bodyclass"}} cmdns{{end}}
+{{define "link"}}//c.com-http.us/madness{{end}}
+{{define "cnm"}}{{end}}
+{{define "plgs"}}
+<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+{{end}}
+{{define "main"}}<div class="hcoins"><amp-list  id="coins-data" layout="flex-item" src="//com-http.us/json/index/coins.json" items= "coins" class="m1"><div placeholder><amp-img  width="642"  height="871"  layout="fixed" src="https://gophercises.com/img/gophercises_lifting.gif"></amp-img></div><div fallback>Failed to load data.</div><template type="amp-mustache"  id="coins-data">{{.AMP.Img}}</template></amp-list></div>{{end}}

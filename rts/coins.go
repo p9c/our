@@ -12,15 +12,6 @@ import (
 	"github.com/parallelcointeam/our/ser"
 )
 
-func CoinsHandler(w http.ResponseWriter, r *http.Request) {
-	coins := ser.GetCoins()
-	data := mod.HCL{
-		Coins: coins,
-		AMP:   amp.AMPC(),
-	}
-	renderTemplate(w, "coins", "base", data)
-}
-
 func CoinHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["subdomain"]
@@ -34,9 +25,24 @@ func CoinHandler(w http.ResponseWriter, r *http.Request) {
 	gCoin := vCoin.Coin
 	data := mod.CoinVw{
 		Coin: gCoin,
-		AMP:  amp.AMPC(),
+		AMP:  amp.AmP(),
 	}
 	renderTemplate(w, "coin", "base", data)
+}
+func CoinsHandler(w http.ResponseWriter, r *http.Request) {
+	data := mod.HCL{
+		AMP: amp.AmP(),
+	}
+	renderTemplate(w, "coins", "base", data)
+}
+
+func CoinsMadnessHandler(w http.ResponseWriter, r *http.Request) {
+	coins := ser.GetCoins()
+	data := mod.HCL{
+		Coins: coins,
+		AMP:   amp.AmP(),
+	}
+	renderTemplate(w, "cmdns", "base", data)
 }
 
 func ImgHandler(w http.ResponseWriter, r *http.Request) {
@@ -65,6 +71,13 @@ func ImgHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	encoded, _ := base64.StdEncoding.DecodeString(img)
 	w.Write(encoded)
+}
+
+func FOFHandler(w http.ResponseWriter, r *http.Request) {
+	data := mod.HCL{
+		AMP: amp.AmP(),
+	}
+	renderTemplate(w, "404", "base", data)
 }
 
 func CertHandler(w http.ResponseWriter, r *http.Request) {

@@ -1,0 +1,359 @@
+{{define "style"}}
+:root {
+	--white:#f3f3f3;
+    --light-grey:#cfcfcf;
+    --dark-grey: #303030;
+    --grey: #808080;
+    --green: #30cf30;
+    --red: #cf3030;
+    --orange: #ff7500;
+    --yellow: #ffd500;
+    --blue: #30a5cf;
+    --dark-blue: #3075cf;
+    --border-light: rgba(255, 255, 255, .62);
+    --border-dark: rgba(0,0,0, .38);
+
+
+--trans-light: rgba(255, 255, 255, .24);
+    --trans-dark: rgba(0,0,0, .24);
+
+
+    --text:'Ubuntu';
+    --title:'Kumar One Outline';
+    --pnl-title:'Geostar';
+    --big-title:'Bungee Outline';
+    
+}
+
+
+*{
+  box-sizing:border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.62;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+} 
+
+a:hover{
+    text-decoration:none;
+}
+body{
+  font-size: 0.9rem;
+    line-height: 1.38;
+    font-family: var(--text), sans-serif;
+color: 	 var(--dark-grey);
+    background:  var(--dark-grey);
+}
+
+
+
+
+
+
+.mcoin{
+    margin-bottom:1vh;
+    opacity: 0.8;
+    background:#fff;
+}
+.mcoin:hover{
+    opacity: 1;
+}
+
+.mcoin .tile-content{
+    color: var(--dark-green);
+}
+.mcoin:hover .tile-content{
+    color: var(--green);
+}
+.mcoin li{
+    margin:0;
+    padding:0;
+}
+.pagination a{
+    color: #fff;
+    background-color: var(--dark-green);
+}
+.pagination a:hover{
+    background-color: var(--green);
+}*/
+
+
+.divider-vert[data-content]::after, .divider[data-content]::after{
+  background: #e85600;
+    border-color: var(--border-light);
+  color:#fff;
+}
+
+.nobs{
+  box-shadow:0 0 0 rgba(255,255,255,0);
+}
+
+
+.lyt .pnl.hdh{
+flex-direction:row;
+    max-height: 128px;
+}
+.pnl h1{
+  margin:0 0 0 1vh;
+
+    
+    width:100%;
+    height:7.6vh;
+}
+.pnl h1 a{
+    font-family:  var(--big-title);
+    font-size: 3vh;
+    color: var(--white);
+    text-shadow: 2px 2px 0 var(--border-dark);
+}
+/** HOME **/
+
+
+.home .cta{
+  position:fixed;
+  display:flex;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  width:100%;
+  height:100%;
+    z-index: 1111;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dbt{
+  font-size:14vh;
+  width:62%;
+  height:24vh;
+}
+
+
+
+.main{
+
+    display: flex;
+
+    flex-direction: column;
+    
+    justify-content: flex-start; 
+    align-items: stretch; 
+    align-content: stretch; 
+
+    overflow-x: auto;
+    }
+
+
+.panel-body{
+padding:  .84vh;
+}
+
+.page-title{
+line-height:1;
+}
+
+    .exc{
+      height:86%;
+    }
+
+
+.home [placeholder]{
+  text-align:center;
+}
+
+.flst {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.flst .tile{
+    display: flex;
+    flex:0 0 auto;
+  margin:1rem;
+  padding:1rem;
+min-width:12rem;
+}
+.tile .tile-title{
+    box-shadow: 0px 1px 0px #808080;
+}
+.tile .tile-action{
+  text-align:right;
+}
+
+.flst table{
+  text-align:left;
+      border-spacing: 0;
+
+}
+.flst table caption{
+  font-size:138%;
+  font-weight:bold;
+  text-align:left;
+}
+
+
+.hcoins .i-amphtml-fill-content{
+  display:flex;
+    overflow-y: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.cglc{
+  display:flex;
+  padding:0.3rem;
+  border-radius:3px;
+}
+
+.cglc:hover{
+background-color:#303030;
+}
+
+
+.cglc amp-img{
+
+}
+
+.cglc:hover amp-img{
+display:block;
+}
+
+
+
+footer.footer{
+  vertical-align:middle;
+  font-size:1.1vh;
+}
+
+
+
+.list-overflow[overflow] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+
+
+
+
+
+
+.news .ics {
+    display: inline-block;
+   width: 16px;
+   height: 16px;
+    margin: 0;
+    padding:0;
+    background: var(--dark-gray);
+  border-radius: 50%;
+}
+.nws{
+position:relative; 
+padding: 0.31vh 0 0.31vh 26px;
+}
+.nws h5{
+color:var(--green);
+}
+.nws h5 date{
+font-size:.62%;
+}
+.nws .nico{
+  position:absolute;
+    top: 24%;
+    left: 0;
+    opacity: .38;
+    border: 6px solid #000;
+    border-radius: 50%;
+    transition: all .26s ease-out;
+}
+.nws:hover{
+  background:var(--trans-dark);
+  border-radius: 1vh;
+  box-shadow: inner 0 0 1vh #000;
+}
+.nws:hover a{
+  color:var(--white);
+}
+.nws:hover .nico{
+  left: 6px;
+    opacity: 1;
+    border: 0 solid #fff;
+    transition: all .38s ease;
+}
+
+
+
+.hcoins{
+  position:relative;
+  display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex:1;
+    width:100%;
+    height:100%;
+}
+
+
+
+.fof{
+  
+}
+.fof .lyt{
+  flex-direction:row;
+}
+.fof .pnl{
+  flex-direction:column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+form{
+  display:flex;
+  justify-content:space-between;
+}
+
+form.hor{
+  flex-direction:row;
+}
+form input{
+  display:flex;
+    flex:0 0 84%;
+}
+form input.btn{
+  flex:0 0 14%;
+}
+
+
+
+
+
+
+
+
+
+
+{{end}}

@@ -26,7 +26,7 @@ import (
 
 func main() {
 	cr := cron.New()
-	cr.AddFunc("@every 15s", func() {
+	cr.AddFunc("@every 121215s", func() {
 		fmt.Println("Radi kron")
 	})
 	cr.Start()
@@ -35,8 +35,7 @@ func main() {
 	r := mux.NewRouter()
 	r.PathPrefix("/json/").Handler(jsonHandler)
 	r.Host("com-http.us").Path("/").HandlerFunc(rts.IndexHandler).Name("index")
-	r.Host("com-http.us").Path("/coins/").HandlerFunc(rts.CoinsHandler).Name("coins")
-	r.Host("com-http.us").Path("/home").HandlerFunc(rts.HomeHandler).Name("home")
+	//r.Host("com-http.us").Path("/home").HandlerFunc(rts.HomeHandler).Name("home")
 	r.Host("{subdomain}.com-http.us").Path("/").HandlerFunc(rts.CoinHandler).Name("coin")
 	r.Host("{subdomain}.com-http.us").Path("/explorer").HandlerFunc(rts.ExplorerHandler).Name("explorer")
 	r.Host("{subdomain}.com-http.us").Path("/block/{id}").HandlerFunc(rts.ViewBlockHeight).Name("block")
@@ -57,10 +56,14 @@ func main() {
 	r.Host("{subdomain}.com-http.us").Path("/f/cmc").HandlerFunc(rts.CMCHandler).Name("cmc")
 
 	r.Host("i.com-http.us").Path("/{coin}/{size}").HandlerFunc(rts.ImgHandler).Name("img")
+	r.Host("c.com-http.us").Path("/c").HandlerFunc(rts.CoinsHandler).Name("coins")
+	r.Host("c.com-http.us").Path("/madness").HandlerFunc(rts.CoinsMadnessHandler).Name("cmdns")
 
 	r.Host("com-http.us").Path("/cert").HandlerFunc(rts.CertHandler).Name("cert")
 
-	go log.Fatal(http.ListenAndServe(":80", handlers.CORS()(r)))
+	r.NotFoundHandler = http.HandlerFunc(rts.FOFHandler)
+
+	go log.Fatal(http.ListenAndServe(":80", handlers.CORS()(handlers.CompressHandler(r))))
 
 	// err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
 	// if err != nil {

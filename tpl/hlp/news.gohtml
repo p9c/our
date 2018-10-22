@@ -1,0 +1,8 @@
+{{define "news"}}
+<div class="pnl news"><h3>{{.Coin.Name}} News</h3><amp-list  id="coin-news"  width="auto"  height="542"  layout="flex-item"  src="//{{.Coin.Slug}}.com-http.us/a/news"  items= "news"  class="m1"><template type="amp-mustache"   id="coin-news"><div class="nws">
+                    <amp-img src="//i.com-http.us/{{.Coin.Slug}}/16" alt="{{.Coin.Name}}"  width="16"  height="16"  layout="fixed"  class="nico"></amp-img>
+                    {{.AMP.News}}
+                   
+</div></template></amp-list>
+</div>
+{{end}}

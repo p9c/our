@@ -23,27 +23,27 @@ type Addr struct {
 }
 
 type Explorer struct {
-	Coin Coin     `json:"coin"`
-	AMP  amp.AMPb `json:"amp"`
+	Coin Coin    `json:"coin"`
+	AMP  amp.AMP `json:"amp"`
 }
 
 type BlVw struct {
-	ID    string   `json:"id"`
-	Coin  Coin     `json:"coin"`
-	Block Block    `json:"block"`
-	AMP   amp.AMPb `json:"amp"`
+	ID    string  `json:"id"`
+	Coin  Coin    `json:"coin"`
+	Block Block   `json:"block"`
+	AMP   amp.AMP `json:"amp"`
 }
 
 type TxVw struct {
-	ID   string   `json:"id"`
-	Coin Coin     `json:"coin"`
-	Tx   Tx       `json:"tx"`
-	AMP  amp.AMPb `json:"amp"`
+	ID   string  `json:"id"`
+	Coin Coin    `json:"coin"`
+	Tx   Tx      `json:"tx"`
+	AMP  amp.AMP `json:"amp"`
 }
 
 type AdVw struct {
-	ID   string   `json:"id"`
-	Coin Coin     `json:"coin"`
-	Addr Addr     `json:"addr"`
-	AMP  amp.AMPb `json:"amp"`
+	ID   string  `json:"id"`
+	Coin Coin    `json:"coin"`
+	Addr Addr    `json:"addr"`
+	AMP  amp.AMP `json:"amp"`
 }

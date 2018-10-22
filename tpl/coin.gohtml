@@ -1,165 +1,82 @@
 {{define "head"}} <title>{{.Coin.Name}}</title> {{end}}
 {{define "bodyclass"}}{{.Coin.Slug}}{{end}}
 {{define "link"}}//{{.Coin.Slug}}.com-http.us/{{end}}
-{{define "body"}}
-<div class="panel bg-gray">
-  <div class="panel-header">
-    <div class="panel-title">{{.Coin.Name}}</div>
-  </div>
-  <div class="panel-nav">
-    <!-- navigation components: tabs, breadcrumbs or pagination -->
-  </div>
-  <div class="panel-body">
-    <!-- contents -->
-  
-<div class="container">
+{{define "cnm"}}<a href="{{template "link" .}}">{{.Coin.Name}}</a>{{end}}
+{{define "plgs"}}
+<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+<script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
+<script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
+  <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
+<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+{{end}}
 
-
-
-
-
-<section id="main" class="coin" role="main">
-    <div class="hml">
-
-
-		<header class="page-header">
-<h1 class="page-title">{{.Coin.Name}}</h1>
-<div class="taxonomy-description"><a href="//{{.Coin.Slug}}.com-http.us/explorer">{{.Coin.Name}} Blockchain Explorer</a></div>
-		</header><!-- .page-header -->
-
-
-  
-    <amp-img src="data:image/png;base64,{{.Coin.Imgs.Img128}}"
-    alt="{{.Coin.Name}}"
-  width="128"
-  height="128"
-  layout="fixed"
-  class="m1">
-  <noscript>
-    <img src="data:image/png;base64,{{.Coin.Imgs.Img128}}" width="128" height="128" alt="{{.Coin.Name}}"> 
-  </noscript>
-</amp-img>
-
-
-
-
-
-  <div class="columns">
-<div class="column col-6 col-xs-12">
-<amp-list 
-  id="coin-data"
-  width="auto"
-  height="800"
-  layout="flex-item"
-  src="//com-http.us/json/coins/{{.Coin.Slug}}.json"
-  items= "coin"
-  single-item
-  class="m1">
-  <template type="amp-mustache"
-    id="coin-data">
-    
-    <dl>
-    <dt>Name</dt><dd>{{`{{name}}`}}</dd>
-    <dt>Symbol</dt><dd>{{`{{symbol}}`}}</dd>
-    <dt>Algorithm</dt><dd>{{`{{algo}}`}}</dd>
-
-    
-    <dt>Description</dt><dd>{{`{{{cdata.desc}}}`}}</dd>
-    <dt>Total Coin Supply</dt><dd>{{`{{cdata.total}}`}}</dd>
-    <dt>Difficulty Adjustment</dt><dd>{{`{{cdata.diff}}`}}</dd>
-    <dt>Block Reward Reduction</dt><dd>{{`{{cdata.rew}}`}}</dd>
-    
-    <dt>Proof Type</dt><dd>{{`{{cdata.proof}}`}}</dd>
-    <dt>Start Date</dt><dd>{{`{{cdata.start}}`}}</dd>
-    <dt>Twitter</dt><dd>{{`{{cdata.tw}}`}}</dd>
-    <dt>Website Url</dt><dd>{{`{{cdata.web}}`}}</dd>
-    
-    
-    
-    </dl>
-  </template>
-</amp-list>
-
-</div>
-
-<div class="column col-6 col-xs-12">
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title h6">News</div>
-              </div>
-              <div class="panel-body">
-                
-
-
-
-<amp-list 
-  id="coin-data"
-  width="auto"
-  height="800"
-  layout="flex-item"
-  src="//{{.Coin.Slug}}.com-http.us/a/news"
-  items= "news"
-    class="m1">
-  <template type="amp-mustache"
-    id="coin-data">
-    
-    
-    
-                    <div class="tile">
-                  <div class="tile-icon">
-                    <figure class="avatar">
-                      <amp-img layout="responsive" src="https://picturepan2.github.io/spectre/img/avatar-1.png" width="32" height="32" alt="Avatar" class="i-amphtml-element i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-layout"><i-amphtml-sizer style="padding-top: 100%;"></i-amphtml-sizer><img decoding="async" alt="Avatar" src="https://picturepan2.github.io/spectre/img/avatar-1.png" class="i-amphtml-fill-content i-amphtml-replaced-content"></amp-img>
-                    </figure>
-                  </div>
-                  <div class="tile-content">
-                    <p class="tile-title">{{.AMP.News}}</p>
-                    <p class="tile-subtitle">{{`{{{pubDate}}}`}}</p>
-                  </div>
-                </div>
-                
-
-
-    
-    
-  </template>
-</amp-list>
-
-
-              </div>
-              <div class="panel-footer">
-                
-              </div>
-            </div>
-          </div>
-
-
-
+{{define "main"}}
+<div class="pnl hdh">
+    <amp-img src="//i.com-http.us/{{.Coin.Slug}}/128" alt="{{.Coin.Name}}"  width="12.31vh" layout="flex-item"  class="m1"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/128" width="128" height="128" alt="{{.Coin.Name}}"></noscript></amp-img>
+      <h1><amp-fit-text height="9.6vh" layout="fixed-height" min-font-size="32">{{.Coin.Name}}</amp-fit-text></h1>
 </div>
 
 
+<div class="pnl "><h3>{{.Coin.Name}} Basics</h3><amp-list id="coin-spec" width="auto" height="128" layout="flex-item" src="//com-http.us/json/coins/{{.Coin.Slug}}.json" items= "coin" single-item class="m1">
+<template type="amp-mustache"  id="coin-spec"><table><tbody>
+    <tr><td>Name</td><td>{{`{{name}}`}}</td></tr>
+    <tr><td>Symbol</td><td>{{`{{symbol}}`}}</td></tr>
+    <tr><td>Start Date</td><td>{{`{{cdata.start}}`}}</td></tr>
+    <tr><td>Twitter</td><td>{{`{{cdata.tw}}`}}</td></tr>
+    <tr><td>Website Url</td><td>{{`{{cdata.web}}`}}</td></tr>
+</tbody></table></template>
+</amp-list></div>
+
+<div class="pnl "><h3>{{.Coin.Name}} Specifications</h3><amp-list id="coin-spec" width="auto" height="128" layout="flex-item" src="//com-http.us/json/coins/{{.Coin.Slug}}.json" items= "coin" single-item class="m1">
+<template type="amp-mustache"  id="coin-spec"><table><tbody><tr><td><table><tbody>
+    <tr><td>Algorithm</td><td>{{`{{algo}}`}}</td></tr>
+    <tr><td>Total Coin Supply</td><td>{{`{{cdata.total}}`}}</td></tr>
+    <tr><td>Difficulty Adjustment</td><td>{{`{{cdata.diff}}`}}</td></tr>
+    <tr><td>Block Reward Reduction</td><td>{{`{{cdata.rew}}`}}</td></tr>
+    <tr><td>Proof Type</td><td>{{`{{cdata.proof}}`}}</td></tr>
+</tbody></table></template>
+</amp-list></div>
+
+  <div class="pnl ">
+    <h3>{{.Coin.Name}} Description</h3>
+<amp-list id="coin-desc" width="auto" height="128" layout="flex-item" src="//com-http.us/json/coins/{{.Coin.Slug}}.json" items= "coin" single-item class="m1">
+  <template type="amp-mustache"  id="coin-desc">
+    {{`{{{cdata.desc}}}`}}
+  </template>
+</amp-list>
+</div>
 
 
+  
+
+  <div class="pnl ">
+
+
+                <h3>{{.Coin.Name}} Links</h3>
 
 <form method="get" target="_blank" action="https://isthiscoinascam.com/check/{{.Coin.Slug}}">
 <button class="btn btn-primary btn-lg h3" type="submit" >Is {{.Coin.Name}} Scam?</button>
 </form>
 
+<a href="//{{.Coin.Slug}}.com-http.us/explorer"><button class="btn btn-primary btn-lg h3">{{.Coin.Name}} Blockchain Explorer</button></a>
+</div>
+
+  <div class="pnl nop bgw">
+
 
 <amp-iframe title="{{.Coin.Slug}}Trends - Interest over time"
   src="https://trends.google.com/trends/embed/explore/TIMESERIES?req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22{{.Coin.Slug}}%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%22today%2012-m%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D&tz=-120&eq=q%3D{{.Coin.Slug}}%26date%3Dtoday%2012-m"
-      height="360"
-    width="auto"
-  layout="flex-item"
-  frameborder="0"
-  sandbox="allow-scripts allow-same-origin">
-  <amp-img src="https://parallelcoin.io/wp-content/uploads/2017/11/parallel_coinN1oB.png"
-    layout="fixed-height"
-    width="auto"
-    height="500"
-    placeholder>
-  </amp-img>
+      height="360"    width="auto"  layout="flex-item"  frameborder="0"  sandbox="allow-scripts allow-same-origin">
+  <amp-img src="//i.com-http.us/{{.Coin.Slug}}/256"  layout="responsive"  width="256"  height="256" placeholder></amp-img>
 </amp-iframe>
 
+</div>
+
+  <div class="pnl ">
 
 
 <amp-timeago class="m1"
@@ -174,6 +91,9 @@
   data-href="https://www.facebook.com/testesmegadivertidos/">
 </amp-facebook-like>
 
+</div>
+
+  <div class="pnl ">
 
 <amp-facebook-comments width="552"
   height="310"
@@ -181,18 +101,33 @@
   data-order-by="time"
   data-href="http://www.directlyrics.com/adele-25-complete-album-lyrics-news.html">
 </amp-facebook-comments>
-</section>
-
-
-
 
 </div>
 
+
+
+
+
+
+}{{template "news" .}}
+
+
+<div class="pnl ">
+<h3>{{.Coin.Name}} Latest Transactions</h3>
+<amp-list width="auto"  height="542"  layout="flex-item" src="//{{.Coin.Slug}}.com-http.us/a/rawpool" items="d" class="cgl"><template type="amp-mustache"><li class="menu-item">{{.AMP.Tx}}</li></template></amp-list>
 </div>
-  <div class="panel-footer">
-    <!-- buttons or inputs -->
-  </div>
+
+<div class="pnl ">
+<h3>{{.Coin.Name}} Graphics</h3>
+
+<amp-img src="data:image/png;base64,{{.Coin.Imgs.Img16}}" alt="{{.Coin.Name}}"  width="16"  height="16"  layout="fixed"  class="m1"><noscript><img src="data:image/png;base64,{{.Coin.Imgs.Img16}}" width="16" height="16" alt="{{.Coin.Name}}"></noscript></amp-img>
+<amp-img src="data:image/png;base64,{{.Coin.Imgs.Img32}}" alt="{{.Coin.Name}}"  width="32"  height="32"  layout="fixed"  class="m1"><noscript><img src="data:image/png;base64,{{.Coin.Imgs.Img32}}" width="32" height="32" alt="{{.Coin.Name}}"></noscript></amp-img>
+<amp-img src="data:image/png;base64,{{.Coin.Imgs.Img64}}" alt="{{.Coin.Name}}"  width="62"  height="64"  layout="fixed"  class="m1"><noscript><img src="data:image/png;base64,{{.Coin.Imgs.Img64}}" width="64" height="64" alt="{{.Coin.Name}}"></noscript></amp-img>
+<amp-img src="data:image/png;base64,{{.Coin.Imgs.Img128}}" alt="{{.Coin.Name}}"  width="128"  height="128"  layout="fixed"  class="m1"><noscript><img src="data:image/png;base64,{{.Coin.Imgs.Img128}}" width="128" height="128" alt="{{.Coin.Name}}"></noscript></amp-img>
+<amp-img src="data:image/png;base64,{{.Coin.Imgs.Img256}}" alt="{{.Coin.Name}}"  width="256"  height="256"  layout="fixed"  class="m1"><noscript><img src="data:image/png;base64,{{.Coin.Imgs.Img256}}" width="256" height="256" alt="{{.Coin.Name}}"></noscript></amp-img>
 </div>
+
+
 {{end}}
 
 

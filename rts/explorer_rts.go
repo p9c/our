@@ -24,7 +24,7 @@ func ExplorerHandler(w http.ResponseWriter, r *http.Request) {
 	gCoin := getCoin(coin)
 	data := mod.Explorer{
 		Coin: gCoin,
-		AMP:  amp.AMPB(),
+		AMP:  amp.AmP(),
 	}
 	renderTemplate(w, "explorerindex", "explorerbase", data)
 }
@@ -38,7 +38,7 @@ func ViewBlockHeight(w http.ResponseWriter, r *http.Request) {
 		ID:    id,
 		Coin:  gCoin,
 		Block: mod.Block{},
-		AMP:   amp.AMPB(),
+		AMP:   amp.AmP(),
 	}
 	//fmt.Println("datadatadatadatadata", data)
 
@@ -53,7 +53,7 @@ func ViewBlockHash(w http.ResponseWriter, r *http.Request) {
 		ID:    id,
 		Coin:  gCoin,
 		Block: mod.Block{},
-		AMP:   amp.AMPB(),
+		AMP:   amp.AmP(),
 	}
 	//fmt.Println("datadatadatadatadata", data)
 
@@ -68,7 +68,7 @@ func ViewTx(w http.ResponseWriter, r *http.Request) {
 		ID:   id,
 		Coin: gCoin,
 		Tx:   mod.Tx{},
-		AMP:  amp.AMPB(),
+		AMP:  amp.AmP(),
 	}
 	renderTemplate(w, "tx", "explorerbase", data)
 }
@@ -81,7 +81,7 @@ func ViewAddr(w http.ResponseWriter, r *http.Request) {
 		ID:   id,
 		Coin: gCoin,
 		Addr: mod.Addr{},
-		AMP:  amp.AMPB(),
+		AMP:  amp.AmP(),
 	}
 	renderTemplate(w, "addr", "explorerbase", data)
 }
