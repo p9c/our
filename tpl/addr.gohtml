@@ -1,7 +1,21 @@
 {{define "title"}} <title>{{.Coin.Name}} Blockchain Explorer - Address - {{.ID}}</title> {{end}}
 {{define "bodyclass"}}{{.Coin.Slug}}{{end}}
 {{define "link"}}//{{.Coin.Slug}}.com-http.us/addr/{{.ID}}{{end}}
-{{define "body"}}
+{{define "cnm"}}<a href="{{template "link" .}}"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/32" alt="{{.Coin.Name}}"  width="32px" height="32px" layout="fixed"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/32" width="32" height="32" alt="{{.Coin.Name}}"></noscript></amp-img>{{.Coin.Name}}</a> - <a href="{{template "link" .}}"> Blockchain Explorer</a>{{end}}
+{{define "pagecss"}}{{template "explorercss" .}}{{end}}
+
+{{define "plgs"}}
+{{template "amplist" .}}
+{{template "ampmustache" .}}
+{{template "ampform" .}}
+{{template "ampsidebar" .}}
+{{template "ampbind" .}}
+{{template "amplightbox" .}}
+{{template "ampselector" .}}
+{{template "ampfittext" .}}
+{{template "ampiframe" .}}
+{{end}}
+{{define "main"}}
 
 <div class="container">
   <div class="columns">

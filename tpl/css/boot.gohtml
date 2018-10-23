@@ -14,7 +14,7 @@
     --border-dark: rgba(0,0,0, .38);
 
 
---trans-light: rgba(255, 255, 255, .24);
+    --trans-light: rgba(255, 255, 255, .24);
     --trans-dark: rgba(0,0,0, .24);
 
 
@@ -24,7 +24,9 @@
     --big-title:'Vollkorn SC';
     
 }
-
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 *{
   box-sizing:border-box;
@@ -50,7 +52,9 @@ color: 	 var(--dark-gray);
     background:  var(--dark-gray);
 }
 
-
+table{
+    width:100%;
+}
 
 
 {{end}}

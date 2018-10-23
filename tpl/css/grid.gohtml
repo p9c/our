@@ -55,7 +55,7 @@
 .lyt .pnl{
   position:relative;
     display: flex;
-    flex:1 0 auto;
+    flex:0 0 auto;
     flex-direction:column;
   margin:.5vh;
   padding:1vh;
@@ -71,6 +71,7 @@ border: .14vh solid var(--border-dark);
 border-radius: .62vh;
 overflow:hidden;
 
+justify-content:space-between;
    transition: all 5s ease-in;
 
 }
@@ -102,14 +103,6 @@ border-radius: 0 0 .5vh .5vh;
   overflow:hidden;
 }
 
-.pnl table{
-  display:table;
- width:100%;
-      border-spacing: 0;
-  text-align:left;
-      font-weight:100;
-}
-
 
 
 .pnl td:first-child {
@@ -137,13 +130,16 @@ flex: 0 0 auto;
   flex:1 0 62vh;
 }
 .lyt .pnl.sid{
-  flex:1 0 38vh;
+  flex:0 0 24%;
 }
 
 
 
 
 
+.mds .lyt,.mds .lyt .pnl{
+    height:100%;
+    }
 
 
 

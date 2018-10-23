@@ -1,5 +1,5 @@
 {{define "title"}}{{.Coin.Name}} Blockchain Explorer{{end}}
-{{define "bodyclass"}}{{.Coin.Slug}}{{end}}
+{{define "bodyclass"}} explorer {{.Coin.Slug}}{{end}}
 {{define "link"}}//{{.Coin.Slug}}.com-http.us/explorer{{end}}
 {{define "cnm"}}<a href="{{template "link" .}}"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/32" alt="{{.Coin.Name}}"  width="32px" height="32px" layout="fixed"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/32" width="32" height="32" alt="{{.Coin.Name}}"></noscript></amp-img>{{.Coin.Name}}</a> - <a href="{{template "link" .}}"> Blockchain Explorer</a>{{end}}
 {{define "pagecss"}}{{template "explorercss" .}}{{end}}

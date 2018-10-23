@@ -1,20 +1,30 @@
-{{define "title"}} <title>COMHTTP</title> {{end}}
-{{define "bodyclass"}} coins{{end}}
+{{define "title"}}COMHTTP{{end}}
+{{define "bodyclass"}} mds{{end}}
 {{define "link"}}//c.com-http.us/c{{end}}
 {{define "call"}}{{end}}
 {{define "cnm"}}{{end}}
+{{define "pagecss"}}{{template "homecss" .}}{{end}}
+{{define "cbg"}}
+{{end}}
+
 
 {{define "plgs"}}
-<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
-<script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
-<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
-<script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
-  <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
-<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+{{template "amplist" .}}
+{{template "ampmustache" .}}
+{{template "ampform" .}}
+{{template "ampsidebar" .}}
+{{template "ampbind" .}}
+{{template "amplightbox" .}}
+{{template "ampselector" .}}
+{{template "ampfittext" .}}
+{{template "ampiframe" .}}
 {{end}}
+
 {{define "main"}}<div class="pnl ttl">
-<amp-iframe title="{{.Coin.Slug}}Trends - Interest over time" src="https://c.con-http.us/madness" height="360"    width="auto"  layout="flex-item"  frameborder="0"  sandbox="allow-scripts"><amp-img src="https://gophercises.com/img/gophercises_lifting.gif"  layout="responsive"  width="256"  height="256" placeholder></amp-img></amp-iframe>
+<amp-iframe  class="ldr" title="over time" src="https://c.con-http.us/madness" height="300"    width="auto"  layout="flex-item"  frameborder="0"  sandbox="allow-scripts"></amp-iframe>
 </div>{{end}}
+
+
+
+
+

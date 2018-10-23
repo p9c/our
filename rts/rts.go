@@ -25,8 +25,9 @@ func init() {
 
 	templates["index"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/css/homecss.gohtml", "tpl/index.gohtml", "tpl/hlp/call.gohtml", "tpl/pnls/coinpnls.gohtml", "tpl/pnls/fb.gohtml"))
 
-	templates["coins"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/coins.gohtml"))
-	templates["cmdns"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/cmdns.gohtml"))
+	templates["coins"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/css/homecss.gohtml", "tpl/coins.gohtml"))
+
+	templates["cmdns"] = template.Must(template.ParseFiles("tpl/cmdns.gohtml"))
 	templates["home"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/home.gohtml"))
 
 	templates["coin"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/css/coincss.gohtml", "tpl/coin.gohtml", "tpl/pnls/coinpnls.gohtml", "tpl/pnls/fb.gohtml"))
