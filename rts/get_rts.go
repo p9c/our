@@ -12,7 +12,7 @@ import (
 
 func CoinNewsHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	var newslist []mod.News
 	nwd := make(map[string]map[string]map[string]interface{})
 

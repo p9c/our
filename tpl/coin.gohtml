@@ -1,7 +1,7 @@
 {{define "title"}}{{.Coin.Name}} - Specifications - BlockChain Explorer - Faucet - Nodes - Source - News{{end}}
 {{define "bodyclass"}}{{.Coin.Slug}}{{end}}
 {{define "link"}}//{{.Coin.Slug}}.com-http.us/{{end}}
-{{define "cnm"}}<a href="{{template "link" .}}">{{.Coin.Name}}</a>{{end}}
+{{define "cnm"}}<a href="{{template "link" .}}"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/32" alt="{{.Coin.Name}}"  width="32px" height="32px" layout="fixed"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/32" width="32" height="32" alt="{{.Coin.Name}}"></noscript></amp-img>{{.Coin.Name}}</a>{{end}}
 {{define "pagecss"}}{{template "coincss" .}}{{end}}
 
 {{define "plgs"}}

@@ -20,18 +20,18 @@ import (
 
 func ExplorerHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	gCoin := getCoin(coin)
 	data := mod.Explorer{
 		Coin: gCoin,
 		AMP:  amp.AmP(),
 	}
-	renderTemplate(w, "explorerindex", "explorerbase", data)
+	renderTemplate(w, "explorer", "base", data)
 }
 
 func ViewBlockHeight(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	id := vars["id"]
 	gCoin := getCoin(coin)
 	data := mod.BlVw{
@@ -42,11 +42,11 @@ func ViewBlockHeight(w http.ResponseWriter, r *http.Request) {
 	}
 	//fmt.Println("datadatadatadatadata", data)
 
-	renderTemplate(w, "blockheight", "explorerbase", data)
+	renderTemplate(w, "blockheight", "base", data)
 }
 func ViewBlockHash(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	id := vars["id"]
 	gCoin := getCoin(coin)
 	data := mod.BlVw{
@@ -57,11 +57,11 @@ func ViewBlockHash(w http.ResponseWriter, r *http.Request) {
 	}
 	//fmt.Println("datadatadatadatadata", data)
 
-	renderTemplate(w, "blockhash", "explorerbase", data)
+	renderTemplate(w, "blockhash", "base", data)
 }
 func ViewTx(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	id := vars["id"]
 	gCoin := getCoin(coin)
 	data := mod.TxVw{
@@ -70,11 +70,11 @@ func ViewTx(w http.ResponseWriter, r *http.Request) {
 		Tx:   mod.Tx{},
 		AMP:  amp.AmP(),
 	}
-	renderTemplate(w, "tx", "explorerbase", data)
+	renderTemplate(w, "tx", "base", data)
 }
 func ViewAddr(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	id := vars["id"]
 	gCoin := getCoin(coin)
 	data := mod.AdVw{
@@ -83,12 +83,12 @@ func ViewAddr(w http.ResponseWriter, r *http.Request) {
 		Addr: mod.Addr{},
 		AMP:  amp.AmP(),
 	}
-	renderTemplate(w, "addr", "explorerbase", data)
+	renderTemplate(w, "addr", "base", data)
 }
 
 func ApiData(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	id := vars["id"]
 	tp := vars["type"]
 	url := ComServer + "a/e/" + coin + "/" + tp + "/" + id
@@ -97,7 +97,7 @@ func ApiData(w http.ResponseWriter, r *http.Request) {
 }
 func ApiLast(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/last"
 	data, _ := getData(url)
 	//fmt.Println("blkblkblkblkblkblk", data)
@@ -105,7 +105,7 @@ func ApiLast(w http.ResponseWriter, r *http.Request) {
 }
 func ApiInfo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/info"
 	data, _ := getData(url)
 	//fmt.Println("blkblkblkblkblkblk", data)
@@ -113,7 +113,7 @@ func ApiInfo(w http.ResponseWriter, r *http.Request) {
 }
 func ApiMiningInfo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/gmi"
 	data, _ := getData(url)
 	//fmt.Println("blkblkblkblkblkblk", data)
@@ -121,7 +121,7 @@ func ApiMiningInfo(w http.ResponseWriter, r *http.Request) {
 }
 func ApiRawPool(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/rmp"
 	data, _ := getData(url)
 	//fmt.Println("blkblkblkblkblkblk", data)
@@ -130,7 +130,7 @@ func ApiRawPool(w http.ResponseWriter, r *http.Request) {
 
 func DoSearch(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	r.ParseForm()
 	search := r.FormValue("src")
 	fmt.Println("searchsearchsearchsearchsearchsearchsearchsearch", search)

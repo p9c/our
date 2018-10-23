@@ -11,7 +11,7 @@ import (
 
 func CMCHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	cn := vars["subdomain"]
+	cn := vars["coin"]
 
 	gdb, err := jdb.OpenDB()
 	if err != nil {

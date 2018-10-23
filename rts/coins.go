@@ -14,7 +14,7 @@ import (
 
 func CoinHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	coin := vars["subdomain"]
+	coin := vars["coin"]
 	gdb, err := jdb.OpenDB()
 	if err != nil {
 	}
@@ -69,6 +69,20 @@ func ImgHandler(w http.ResponseWriter, r *http.Request) {
 	case "256":
 		img = vCoin.Coin.Imgs.Img256
 	}
+	encoded, _ := base64.StdEncoding.DecodeString(img)
+	w.Write(encoded)
+}
+func IcoHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	coin := vars["coin"]
+	gdb, err := jdb.OpenDB()
+	if err != nil {
+	}
+	vCoin := mod.VCoin{}
+	if err := gdb.Read("coins", coin, &vCoin); err != nil {
+		fmt.Println("Error", err)
+	}
+	img := vCoin.Coin.Imgs.Img16
 	encoded, _ := base64.StdEncoding.DecodeString(img)
 	w.Write(encoded)
 }
