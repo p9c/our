@@ -1,4 +1,4 @@
-{{define "blocks"}}<div class="pnl big"><h2>Last {{.Coin.Name}} Blocks</h2>
+{{define "blocks"}}<div class="pnl"><h2>Last {{.Coin.Name}} Blocks</h2>
 <table><thead><tr><th>Height</th><th>Hash</th><th>Difficulty</th><th>Confirmations</th><th colspan="8">Transactions</th></tr></thead>
 <tbody><tr><td  colspan="12"><div class="lbl">
 <amp-list  layout="flex-item" src="//{{.Coin.Slug}}.com-http.us/a/last" items="d" class="cgl"><template type="amp-mustache">
@@ -8,7 +8,7 @@
 
 
 {{define "info"}}
-<div class="pnl">
+<div class="pnl sid">
     <h3>Info</h3>
 <amp-list  height="300" layout="fixed-height" src="//{{.Coin.Slug}}.com-http.us/a/mining" items="d" single-item class="cgl">
 <template type="amp-mustache"><table><tbody>

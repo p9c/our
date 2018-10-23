@@ -24,7 +24,7 @@
 
 
 
-{{define "trends"}}<div class="pnl nop bgw"><amp-iframe title="{{.Coin.Slug}}Trends - Interest over time"  src="https://trends.google.com/trends/embed/explore/TIMESERIES?req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22{{.Coin.Slug}}%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%22today%2012-m%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D&tz=-120&eq=q%3D{{.Coin.Slug}}%26date%3Dtoday%2012-m"      height="360"    width="auto"  layout="flex-item"  frameborder="0"  sandbox="allow-scripts allow-same-origin"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/256"  layout="responsive"  width="256"  height="256" placeholder></amp-img></amp-iframe></div>{{end}}
+{{define "trends"}}<div class="pnl nop nof"><amp-iframe title="{{.Coin.Slug}}Trends - Interest over time"  src="https://trends.google.com/trends/embed/explore/TIMESERIES?req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22{{.Coin.Slug}}%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%22today%2012-m%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D&tz=-120&eq=q%3D{{.Coin.Slug}}%26date%3Dtoday%2012-m"      height="360"    width="auto"  layout="flex-item"  frameborder="0"  sandbox="allow-scripts allow-same-origin"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/256"  layout="flex-item"  placeholder></amp-img></amp-iframe></div>{{end}}
 
 
 

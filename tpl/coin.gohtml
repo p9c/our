@@ -14,6 +14,7 @@
 {{template "ampselector" .}}
 {{template "ampfittext" .}}
 {{template "ampiframe" .}}
+{{template "ampaccordion" .}}
 {{end}}
 
 {{define "main"}}
@@ -24,14 +25,24 @@
 {{template "links" .}}
 {{template "trends" .}}
 
+ <div class="pnl "><amp-timeago class="m1"  width="160"  height="20"  datetime="2017-03-14T00:37:33.809Z">Tuesday 14 March 2017 00.37</amp-timeago></div>
+
  <div class="pnl ">
-
-
-<amp-timeago class="m1"
-  width="160"
-  height="20"
-  datetime="2017-03-14T00:37:33.809Z">Tuesday 14 March 2017 00.37</amp-timeago>
-
+    <amp-accordion expand-single-section animate>
+      <section>
+        <h4>Section 1</h4>
+        <p>Id lacus amet. Aliquam eos nunc ut scelerisque lacinia, eu rutrum id, vestibulum aliqua vivamus luctus eu rhoncus ut, sodales id. Velit lacus, fermentum neque et sagittis, ac venenatis volutpat, dolore neque feugiat proin fermentum odio, odio arcu in eu wisi. </p>
+      </section>
+      <section>
+        <h4>Section 2</h4>
+        <p>Id lacus amet. Aliquam eos nunc ut scelerisque lacinia, eu rutrum id, vestibulum aliqua vivamus luctus eu rhoncus ut, sodales id. Velit lacus, fermentum neque et sagittis, ac venenatis volutpat, dolore neque feugiat proin fermentum odio, odio arcu in eu wisi. </p>
+      </section>
+      <section>
+        <h4>Section 3</h4>
+        <p>Id lacus amet. Aliquam eos nunc ut scelerisque lacinia, eu rutrum id, vestibulum aliqua vivamus luctus eu rhoncus ut, sodales id. Velit lacus, fermentum neque et sagittis, ac venenatis volutpat, dolore neque feugiat proin fermentum odio, odio arcu in eu wisi. </p>
+      </section>
+    </amp-accordion>
+</div>
   
 
 
