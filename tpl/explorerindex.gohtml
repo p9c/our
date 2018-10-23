@@ -1,4 +1,4 @@
-{{define "head"}} <title>{{.Coin.Name}} Blockchain Explorer</title> {{end}}
+{{define "title"}} <title>{{.Coin.Name}} Blockchain Explorer</title> {{end}}
 {{define "bodyclass"}}{{.Coin.Slug}}{{end}}
 {{define "link"}}//{{.Coin.Slug}}.com-http.us/explorer{{end}}
 {{define "cnm"}}<a href="{{template "link" .}}"> Blockchain Explorer</a>{{end}}

@@ -21,20 +21,25 @@ func init() {
 		templates = make(map[string]*template.Template)
 	}
 
-	templates["index"] = template.Must(template.ParseFiles("tpl/index.gohtml", "tpl/hlp/call.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["coins"] = template.Must(template.ParseFiles("tpl/coins.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["cmdns"] = template.Must(template.ParseFiles("tpl/cmdns.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["home"] = template.Must(template.ParseFiles("tpl/home.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["coin"] = template.Must(template.ParseFiles("tpl/coin.gohtml", "tpl/hlp/news.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["explorerindex"] = template.Must(template.ParseFiles("tpl/explorerindex.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["blockheight"] = template.Must(template.ParseFiles("tpl/block.gohtml", "tpl/block_height.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["blockhash"] = template.Must(template.ParseFiles("tpl/block.gohtml", "tpl/block_hash.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["tx"] = template.Must(template.ParseFiles("tpl/tx.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
-	templates["addr"] = template.Must(template.ParseFiles("tpl/addr.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
+	//templates["base"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml","tpl/css/boot.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml"))
 
-	templates["404"] = template.Must(template.ParseFiles("tpl/404.gohtml", "tpl/hlp/search.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
+	templates["index"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/css/homecss.gohtml", "tpl/index.gohtml", "tpl/hlp/call.gohtml", "tpl/pnls/coinpnls.gohtml", "tpl/pnls/fb.gohtml"))
 
-	templates["cmc"] = template.Must(template.ParseFiles("tpl/frame/cmc.gohtml", "tpl/hlp/spectre.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/style.gohtml"))
+	templates["coins"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/coins.gohtml"))
+	templates["cmdns"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/cmdns.gohtml"))
+	templates["home"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/home.gohtml"))
+
+	templates["coin"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/css/coincss.gohtml", "tpl/coin.gohtml", "tpl/pnls/coinpnls.gohtml", "tpl/pnls/fb.gohtml"))
+
+	templates["explorerindex"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/explorerindex.gohtml"))
+	templates["blockheight"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/block.gohtml", "tpl/block_height.gohtml"))
+	templates["blockhash"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/block.gohtml", "tpl/block_hash.gohtml"))
+	templates["tx"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/tx.gohtml"))
+	templates["addr"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/addr.gohtml"))
+
+	templates["404"] = template.Must(template.ParseFiles("tpl/hlp/libs.gohtml", "tpl/css/boot.gohtml", "tpl/css/grid.gohtml", "tpl/css/typo.gohtml", "tpl/css/btn.gohtml", "tpl/hlp/base.gohtml", "tpl/hlp/body.gohtml", "tpl/hlp/head.gohtml", "tpl/hlp/style.gohtml", "tpl/hlp/spectre.gohtml", "tpl/404.gohtml", "tpl/hlp/search.gohtml"))
+
+	templates["cmc"] = template.Must(template.ParseFiles("tpl/frame/cmc.gohtml"))
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {

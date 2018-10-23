@@ -1,91 +1,22 @@
 {{define "bodyclass"}} home{{end}}
+{{define "title"}}Specifications - BlockChain Explorer - Faucet - Nodes - Source - News{{end}}
 {{define "cnm"}}{{end}}
 {{define "link"}}//com-http.us/{{end}}
+{{define "pagecss"}}{{template "homecss" .}}{{end}}
+
 {{define "plgs"}}
-<script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
-<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
-<script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
-<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
-<script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
-  <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
-<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+{{template "amplist" .}}
+{{template "ampmustache" .}}
+{{template "ampform" .}}
+{{template "ampsidebar" .}}
+{{template "ampbind" .}}
+{{template "amplightbox" .}}
+{{template "ampselector" .}}
+{{template "ampfittext" .}}
+{{template "ampiframe" .}}
 {{end}}
 
 {{define "main"}}
-
 {{template "call" .}}
-
-  {{range .Coins}}{{ if .Coin.Explorer}}
-
-<div class="pnl">
-              <div class="tile-icon">
-                  <a href="//{{.Coin.Slug}}.com-http.us" class="hcoin {{.Coin.Algo}}" >
-                <figure class="avatar avatar-xl">
-                  <amp-img layout="fixed" src="data:image/png;base64,{{.Coin.Imgs.Img64}}" width="64" height="64" alt="{{ .Coin.Name}}" class="i-amphtml-element i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-layout"><i-amphtml-sizer style="padding-top: 100%;"></i-amphtml-sizer><img decoding="async" alt="{{ .Coin.Name}}" src="data:image/png;base64,{{.Coin.Imgs.Img64}}" class="i-amphtml-fill-content i-amphtml-replaced-content"></amp-img>
-                </figure>
-                </a>
-              </div>
-              <div class="tile-content">
-    <p class="tile-title"><a href="//{{.Coin.Slug}}.com-http.us" class="hcoin {{.Coin.Algo}} h2" >{{ .Coin.Name}}</p></a>
-
-    <amp-live-list data-poll-interval="1500" id="{{.Coin.Slug}}-stat">
-  <button update on="tap:amp-live-list-update.update" class="ampstart-btn caps">You have updates</button>
-  <div items><div id="list-item-1" data-sort-time="1234567" data-update-time="20181021052854">
-<amp-list height="64" layout="fixed-height" src="//{{.Coin.Slug}}.com-http.us/a/mining" items="d" single-item class="cgl">
-<template type="amp-mustache">
-
-<table>
-    <tbody>
-        <tr>
-            <td>Blocks:</td>
-            <td>{{`{{blocks}}`}}</td>
-        </tr>
-        <tr>
-            <td>Difficulty:</td>
-            <td>{{`{{difficulty}}`}}</td>
-        </tr>
-        <tr>
-            <td>MemPool Tx:</td>
-            <td>{{`{{pooledtx}}`}}</td>
-        </tr>
-    </tbody>
-</table>
-    
-
-
-      </template>
-</amp-list>
-</div></div>
-</amp-live-list>
-<div class="tile-action">
-                    <a href="//{{.Coin.Slug}}.com-http.us/explorer"><button class="btn btn-primary">Explorer</button></a>
-                    <a href="//{{.Coin.Slug}}.com-http.us"><button class="btn">Info</button></a>
-              </div>
-              </div>          
-</div>
- {{end}}{{end}}
-
-
-{{end}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{{template "explorers" .}}
+ {{end}}
