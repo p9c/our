@@ -1,5 +1,14 @@
+{{define "blocks"}}<div class="pnl big"><h2>Last {{.Coin.Name}} Blocks</h2>
+<table><thead><tr><th>Height</th><th>Hash</th><th>Difficulty</th><th>Confirmations</th><th colspan="8">Transactions</th></tr></thead>
+<tbody><tr><td  colspan="12"><div class="lbl">
+<amp-list  layout="flex-item" src="//{{.Coin.Slug}}.com-http.us/a/last" items="d" class="cgl"><template type="amp-mustache">
+<table><tr><td>{{.AMP.BlockHeight}}<hr>{{`{{time}}`}}</td><td>{{.AMP.BlockHash}}</td><td>{{`{{difficulty}}`}}</td><td>{{`{{confirmations}}`}}</td><td colspan="4"><ul>{{`{{#tx}}`}}<li>{{.AMP.Tx}}</li>{{`{{/tx}}`}}</ul></td></tr></tbody></table></template></amp-list>
+</div></td></tr></tbody><tfoot><tr><td colspan="2">Name</td><td colspan="10">Address</td></tr></tfoot></table></div>
+{{end}}
+
+
 {{define "info"}}
-<div class="pnl sid">
+<div class="pnl">
     <h3>Info</h3>
 <amp-list  height="300" layout="fixed-height" src="//{{.Coin.Slug}}.com-http.us/a/mining" items="d" single-item class="cgl">
 <template type="amp-mustache"><table><tbody>
@@ -13,22 +22,3 @@
 </div>
 {{end}}
 
-
-{{define "blocks"}}<div class="pnl big"><h2>Last {{.Coin.Name}} Blocks</h2>
-<amp-list  layout="flexbox-item" src="//{{.Coin.Slug}}.com-http.us/a/last" items="d" class="cgl"><template type="amp-mustache">
-Height {{.AMP.BlockHeight}}
-<br>
-{{`{{time}}`}}
-<br>
-Hash {{.AMP.BlockHash}}
-<br>
-Difficulty: {{`{{difficulty}}`}}
-<br>
-{{`{{confirmations}}`}}<sub class="h6">confirmations</sub>
-<br>
-     <ul class="menu nobs">
-        <li class="divider color-dark" data-content="Transactions"></li>
-      <!-- menu item standard -->
-        {{`{{#tx}}`}}<li class="menu-item">{{.AMP.Tx}}</li>{{`{{/tx}}`}}
-     </ul></template></amp-list></div>
-{{end}}

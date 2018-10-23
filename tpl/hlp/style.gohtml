@@ -168,7 +168,7 @@ footer.footer{
   border-radius: 50%;
 }
 .nws{
-position:relative; 
+  position:relative;
 padding: .38vh .38vh .38vh 26px;
 
 border-right: 0vh solid var(--yellow);
@@ -274,7 +274,21 @@ form input.btn{
 
 
 
-
+.pbg{
+    position:absolute;
+filter: blur(2px) opacity(0.24);
+-webkit-filter:  blur(2px) opacity(0.24);
+}
+header .pbg{
+  bottom:-1.62vh;
+  left:-1.62vh;
+transform: scale(4) translate(2vh, 0) skew(38deg, 0deg);
+}
+footer .pbg{
+  top:-1.62vh;
+  right:-1.62vh;
+transform: scale(4) translate(-2vh, 0) skew(-38deg, 0deg);
+}
 
 
 
