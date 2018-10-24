@@ -25,4 +25,23 @@
 {{define "main"}}
 {{template "blocks" .}}
 {{template "info" .}}
+
+<div class="pnl">
+  <form method="GET"
+  class="p4"
+  action="/search"
+  target="_top">
+    <div class="form-group has-success columns">
+
+    <input type="text"
+    class="form-label column col-10" 
+      placeholder="Search..."
+      name="src">
+  <input type="submit"
+    value="Search"
+    class="btn btn-primary input-group-btn column col-2">
+  </div>
+  </form>
+</div>
+
 {{end}}
