@@ -14,6 +14,9 @@ import (
 var cf = conf.CsYsConf()
 var ComServer = cf.ComServer
 
+func init() {
+	//getData()
+}
 func GetCoins() (coins []mod.VCoin) {
 	gdb, err := jdb.OpenDB()
 	if err != nil {
@@ -74,6 +77,7 @@ func getData() {
 	mapCoins, err := ioutil.ReadAll(gamp.Body)
 	var gcoins []mod.Coin
 	var coins []mod.CoinAmp
+	var bcoins []mod.BCoinAmp
 	json.Unmarshal(mapCoins, &gcoins)
 	if err != nil {
 		fmt.Println("Read error", err)
@@ -86,6 +90,7 @@ func getData() {
 		}
 		if coin.Slug != gcoin.Slug {
 			var acoin mod.CoinAmp
+			var bcoin mod.BCoinAmp
 			gimg, err := http.Get(ComServer + "a/img/" + coin.Slug)
 			if err != nil {
 				fmt.Println("Img get error", err)
@@ -103,22 +108,31 @@ func getData() {
 				CData:    coin.CData,
 				Imgs:     imgs,
 			}
-			img := "//i.com-http.us/" + coin.Slug + "/32"
 			acoin = mod.CoinAmp{
-				Name:     coin.Name,
-				Symbol:   coin.Symbol,
-				Slug:     coin.Slug,
-				Algo:     coin.Algo,
-				Img:      img,
-				Explorer: coin.Explorer,
+				Name:   coin.Name,
+				Symbol: coin.Symbol,
+				Slug:   coin.Slug,
+				Algo:   coin.Algo,
 			}
 			cO := map[string]interface{}{"coin": coin}
 			gdb.Write("coins", coin.Slug, cO)
 			fmt.Println("Inserteded coin:", coin.Slug)
 			coins = append(coins, acoin)
-		}
 
+			if coin.Explorer != false {
+				bcoin = mod.BCoinAmp{
+					Name:   coin.Name,
+					Symbol: coin.Symbol,
+					Slug:   coin.Slug,
+					Algo:   coin.Algo,
+				}
+				bcoins = append(bcoins, bcoin)
+			}
+
+		}
+		cEs := map[string]interface{}{"coins": bcoins}
 		cOs := map[string]interface{}{"coins": coins}
+		gdb.Write("index", "bitnodes", cEs)
 		gdb.Write("index", "coins", cOs)
 	}
 }

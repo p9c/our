@@ -1,7 +1,7 @@
-{{define "name"}}<div class="pnl chd"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/128" alt="{{.Coin.Name}}"  width="128px" height="128px" layout="fixed"  class="nic"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/128" width="128" height="128" alt="{{.Coin.Name}}"></noscript></amp-img>
-<h1><amp-fit-text height="4.8vh" layout="fixed-height" min-font-size="3vh">{{.Coin.Name}}</amp-fit-text></h1></div>{{end}}
+{{define "name"}}<div class="pnl pha chd"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/128" alt="{{.Coin.Name}}"  width="128px" height="128px" layout="fixed"  class="nic"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/128" width="128" height="128" alt="{{.Coin.Name}}"></noscript></amp-img>
+<h1><amp-fit-text height="80" layout="fixed-height" min-font-size="68">{{.Coin.Name}}</amp-fit-text></h1></div>{{end}}
 
-{{define "basics"}}<div class="pnl "><h3>{{.Coin.Name}} Basics</h3><amp-list id="coin-spec" width="auto" height="128" layout="flex-item" src="//com-http.us/json/coins/{{.Coin.Slug}}.json" items= "coin" single-item class="m1"><template type="amp-mustache"  id="coin-spec"><table><tbody>
+{{define "basics"}}<div class="pnl "><h3>{{.Coin.Name}} Basics</h3><amp-list id="coin-spec" width="auto" height="220" layout="flex-item" src="//com-http.us/json/coins/{{.Coin.Slug}}.json" items= "coin" single-item class="m1"><template type="amp-mustache"  id="coin-spec"><table><tbody>
     <tr><td>Name</td><td>{{`{{name}}`}}</td></tr>
     <tr><td>Symbol</td><td>{{`{{symbol}}`}}</td></tr>
     <tr><td>Start Date</td><td>{{`{{cdata.start}}`}}</td></tr>

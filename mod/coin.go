@@ -57,10 +57,14 @@ type CoinVw struct {
 }
 
 type CoinAmp struct {
-	Name     string `json:"name"`
-	Symbol   string `json:"symbol"`
-	Slug     string `json:"slug"`
-	Algo     string `json:"algo"`
-	Img      string `json:"img"`
-	Explorer bool   `json:"explorer"`
+	Name   string `json:"name"`
+	Symbol string `json:"symbol"`
+	Slug   string `json:"slug"`
+	Algo   string `json:"algo"`
+}
+type BCoinAmp struct {
+	Name   string `json:"name"`
+	Symbol string `json:"symbol"`
+	Slug   string `json:"slug"`
+	Algo   string `json:"algo"`
 }

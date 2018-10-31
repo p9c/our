@@ -100,7 +100,6 @@ func ApiLast(w http.ResponseWriter, r *http.Request) {
 	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/last"
 	data, _ := getData(url)
-	//fmt.Println("blkblkblkblkblkblk", data)
 	w.Write([]byte(data))
 }
 func ApiInfo(w http.ResponseWriter, r *http.Request) {
@@ -108,7 +107,13 @@ func ApiInfo(w http.ResponseWriter, r *http.Request) {
 	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/info"
 	data, _ := getData(url)
-	//fmt.Println("blkblkblkblkblkblk", data)
+	w.Write([]byte(data))
+}
+func ApiPeer(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	coin := vars["coin"]
+	url := ComServer + "a/e/" + coin + "/peer"
+	data, _ := getData(url)
 	w.Write([]byte(data))
 }
 func ApiMiningInfo(w http.ResponseWriter, r *http.Request) {
@@ -116,7 +121,6 @@ func ApiMiningInfo(w http.ResponseWriter, r *http.Request) {
 	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/gmi"
 	data, _ := getData(url)
-	//fmt.Println("blkblkblkblkblkblk", data)
 	w.Write([]byte(data))
 }
 func ApiRawPool(w http.ResponseWriter, r *http.Request) {
@@ -124,7 +128,6 @@ func ApiRawPool(w http.ResponseWriter, r *http.Request) {
 	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/rmp"
 	data, _ := getData(url)
-	//fmt.Println("blkblkblkblkblkblk", data)
 	w.Write([]byte(data))
 }
 
@@ -132,10 +135,10 @@ func DoSearch(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["coin"]
 	r.ParseForm()
-	search := r.FormValue("src")
+	search := r.FormValue("chsrc")
 	fmt.Println("searchsearchsearchsearchsearchsearchsearchsearch", search)
 
-	tps := []string{"block", "blockhash", "tx", "addr"}
+	tps := []string{"block", "hash", "tx", "addr"}
 	var tpt = "noresults"
 	for _, tp := range tps {
 		url := ComServer + "a/e/" + coin + "/" + tp + "/" + search
@@ -153,5 +156,5 @@ func DoSearch(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	http.Redirect(w, r, fmt.Sprintf("/"+tpt+"/"+search), http.StatusPermanentRedirect)
+	http.Redirect(w, r, fmt.Sprintf("/explorer/"+tpt+"/"+search), http.StatusPermanentRedirect)
 }
