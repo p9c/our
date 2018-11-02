@@ -53,6 +53,7 @@ func main() {
 	proxy := httputil.NewSingleHostReverseProxy(remote)
 
 	r.Host("com-http.us").Path("/").HandlerFunc(rts.NXIndexHandler(proxy)).Name("nxindex")
+	r.Host("com-http.us").Path("/coins").HandlerFunc(rts.NXCoinsHandler(proxy)).Name("nxcoins")
 	r.Host("{coin}.com-http.us").Path("/").HandlerFunc(rts.NXCoinHandler(proxy)).Name("nxcoin")
 
 	//	r.Host("com-http.us").Path("/home").HandlerFunc(rts.HomeHandler).Name("home")
@@ -73,6 +74,10 @@ func main() {
 	r.Host("{coin}.com-http.us").Path("/explorer/search").HandlerFunc(rts.DoSearch).Name("search")
 	//api
 	r.Host("{coin}.com-http.us").Path("/a/last").HandlerFunc(rts.ApiLast).Name("last")
+
+	r.Host("{coin}.com-http.us").Path("/a/b").HandlerFunc(rts.ApiLastBlock).Name("b")
+	r.Host("{coin}.com-http.us").Path("/a/b/{id}").HandlerFunc(rts.ApiBlockTxAddr).Name("bta")
+
 	r.Host("{coin}.com-http.us").Path("/a/info").HandlerFunc(rts.ApiInfo).Name("info")
 	r.Host("{coin}.com-http.us").Path("/a/peer").HandlerFunc(rts.ApiPeer).Name("peer")
 	r.Host("{coin}.com-http.us").Path("/a/mining").HandlerFunc(rts.ApiMiningInfo).Name("mining")

@@ -102,6 +102,24 @@ func ApiLast(w http.ResponseWriter, r *http.Request) {
 	data, _ := getData(url)
 	w.Write([]byte(data))
 }
+
+func ApiLastBlock(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	coin := vars["coin"]
+	url := ComServer + "a/e/" + coin + "/b"
+	data, _ := getData(url)
+	w.Write([]byte(data))
+}
+
+func ApiBlockTxAddr(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	coin := vars["coin"]
+	id := vars["id"]
+	url := ComServer + "a/e/" + coin + "/b/" + id
+	data, _ := getData(url)
+	w.Write([]byte(data))
+}
+
 func ApiInfo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["coin"]
