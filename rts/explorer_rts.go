@@ -141,10 +141,18 @@ func ApiMiningInfo(w http.ResponseWriter, r *http.Request) {
 	data, _ := getData(url)
 	w.Write([]byte(data))
 }
-func ApiRawPool(w http.ResponseWriter, r *http.Request) {
+func ApiRawMemPool(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["coin"]
 	url := ComServer + "a/e/" + coin + "/rmp"
+	data, _ := getData(url)
+	w.Write([]byte(data))
+}
+
+func NodesHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	coin := vars["coin"]
+	url := ComServer + "a/n/" + coin
 	data, _ := getData(url)
 	w.Write([]byte(data))
 }

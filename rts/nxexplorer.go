@@ -45,3 +45,10 @@ func NXAddrsHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Re
 		p.ServeHTTP(w, r)
 	}
 }
+
+func NXNetworkHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/network"
+		p.ServeHTTP(w, r)
+	}
+}

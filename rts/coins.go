@@ -98,3 +98,21 @@ func CertHandler(w http.ResponseWriter, r *http.Request) {
 	ser.GetNames()
 
 }
+
+func CoinsAMP(w http.ResponseWriter, r *http.Request) {
+	url := ComServer + "a/c/a"
+	data, _ := getData(url)
+	w.Write([]byte(data))
+}
+
+func CoinsAMPimg(w http.ResponseWriter, r *http.Request) {
+	url := ComServer + "a/c/i"
+	data, _ := getData(url)
+	w.Write([]byte(data))
+}
+
+func CoinsBNAMP(w http.ResponseWriter, r *http.Request) {
+	url := ComServer + "a/c/b"
+	data, _ := getData(url)
+	w.Write([]byte(data))
+}

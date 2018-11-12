@@ -20,6 +20,12 @@ func NXCoinsHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Re
 		p.ServeHTTP(w, r)
 	}
 }
+func NXWordsHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		r.URL.Path = "/x/words"
+		p.ServeHTTP(w, r)
+	}
+}
 func NXCoinHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		r.URL.Path = "/coin/" + mux.Vars(r)["coin"]
