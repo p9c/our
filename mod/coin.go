@@ -47,7 +47,8 @@ type HCL struct {
 	AMP amp.AMP `json:"amp"`
 }
 type VCoin struct {
-	Coin Coin `json:"coin"`
+	Coin  Coin        `json:"coin"`
+	Nodes interface{} `json:"nodes"`
 }
 
 type CoinVw struct {

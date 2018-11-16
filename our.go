@@ -14,6 +14,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"log"
 	"net/http"
@@ -32,10 +33,8 @@ func main() {
 		fmt.Println("Radi kron")
 	})
 	cr.Start()
-	jsonHandler := http.FileServer(http.Dir("./JDB/"))
-	jsonHandler = http.StripPrefix("/json/", jsonHandler)
+
 	r := mux.NewRouter()
-	r.PathPrefix("/json/").Handler(jsonHandler)
 
 	//	r.Host("com-http.us").Path("/").HandlerFunc(rts.NXCoinsHandler).Name("nxcoins")
 	//r.Host("com-http.us").Path("/").HandlerFunc(rts.IndexHandler).Name("index")
@@ -52,12 +51,12 @@ func main() {
 	}
 	amprx := httputil.NewSingleHostReverseProxy(aremote)
 
-	ftarget := "http://127.0.0.1:3554/"
-	fremote, err := url.Parse(ftarget)
-	if err != nil {
-		panic(err)
-	}
-	ifsprx := httputil.NewSingleHostReverseProxy(fremote)
+	// ftarget := "http://127.0.0.1:3557/"
+	// fremote, err := url.Parse(ftarget)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// ifsprx := httputil.NewSingleHostReverseProxy(fremote)
 
 	r.Host("com-http.us").Path("/").HandlerFunc(rts.NXIndexHandler(amprx)).Name("nxindex")
 	r.Host("com-http.us").Path("/coins").HandlerFunc(rts.NXCoinsHandler(amprx)).Name("nxcoins")
@@ -83,9 +82,16 @@ func main() {
 	r.Host("{coin}.com-http.us").Path("/explorer/tx/{id}").HandlerFunc(rts.NXTxHandler(amprx)).Name("nxtx")
 	r.Host("{coin}.com-http.us").Path("/explorer/addr/{id}").HandlerFunc(rts.NXAddrsHandler(amprx)).Name("nxaddr")
 
+	r.Host("{coin}.com-http.us").Path("/explorer/search").HandlerFunc(rts.DoSearch).Name("search")
+
 	r.Host("{coin}.com-http.us").Path("/network").HandlerFunc(rts.NXNetworkHandler(amprx)).Name("nxnetwork")
 
-	r.Host("{coin}.com-http.us").Path("/explorer/search").HandlerFunc(rts.DoSearch).Name("search")
+	r.Host("{coin}.com-http.us").Path("/price").HandlerFunc(rts.NXPriceHandler(amprx)).Name("nxprice")
+
+	r.Host("{coin}.com-http.us").Path("/ecosystem").HandlerFunc(rts.NXEcoHandler(amprx)).Name("nxeco")
+
+	r.Host("f.com-http.us").Path("/{frame}/{file}").HandlerFunc(rts.Frames(amprx)).Name("nxframes")
+
 	//api
 	//r.Host("{coin}.com-http.us").Path("/a/l").HandlerFunc(rts.ApiLast).Name("last")
 
@@ -108,20 +114,45 @@ func main() {
 
 	r.Host("i.com-http.us").Path("/{coin}/{size}").HandlerFunc(rts.ImgHandler).Name("img")
 
+	r.Host("{coin}.com-http.us").Path("/frames/{frame}").HandlerFunc(rts.FrameHandler).Name("frame")
+
 	// r.Host("c.com-http.us").Path("/c").HandlerFunc(rts.CoinsHandler).Name("coins")
 	// r.Host("c.com-http.us").Path("/madness").HandlerFunc(rts.CoinsMadnessHandler).Name("cmdns")
 
-	r.Host("com-http.us").Path("/nuxt/{nfile}").HandlerFunc(rts.NXNuxt(ifsprx)).Name("nxnuxt")
-	r.Host("{coin}.com-http.us").Path("/frame/{frame}").HandlerFunc(rts.NXFrame(ifsprx)).Name("nxiframe")
+	// r.Host("{coin}.com-http.us").Path("/__webpack_hmr").HandlerFunc(rts.NXWebPackHmr(ifsprx)).Name("nxwebpackhmr")
+
+	// r.Host("{coin}.com-http.us").Path("/_nuxt/{nfile}").HandlerFunc(rts.NXNuxt(ifsprx)).Name("nxnuxt")
+	// r.Host("{coin}.com-http.us").Path("/_nuxt/{nsub}/{nfile}").HandlerFunc(rts.NXNuxtSub(ifsprx)).Name("nxnuxtsub")
+	// r.Host("{coin}.com-http.us").Path("/_nuxt/{nsub}/{nssub}/{nfile}").HandlerFunc(rts.NXNuxtSSub(ifsprx)).Name("nxnuxtssub")
+	// r.Host("{coin}.com-http.us").Path("/_nuxt/{nsub}/{nssub}/{nsssub}/{nfile}").HandlerFunc(rts.NXNuxtSSSub(ifsprx)).Name("nxnuxtsssub")
+	// r.Host("{coin}.com-http.us").Path("/_nuxt/{nsub}/{nssub}/{nsssub}/{nssssub}/{nfile}").HandlerFunc(rts.NXNuxtSSSSub(ifsprx)).Name("nxnuxtssssub")
+	// r.Host("{coin}.com-http.us").Path("/_nuxt/{nsub}/{nssub}/{nsssub}/{nssssub}/{nsssssub}/{nfile}").HandlerFunc(rts.NXNuxtSSSSSub(ifsprx)).Name("nxnuxtsssssub")
+
+	// r.Host("com-http.us").Path("/frame/nodes").HandlerFunc(rts.NXFrame(ifsprx)).Name("nxiframe")
 
 	// r.Host("com-http.us").Path("/cert").HandlerFunc(rts.CertHandler).Name("cert")
 
+	// r.PathPrefix("/_nuxt/").HandlerFunc(rts.NXNuxt(ifsprx))
+
+	//r.Host("{coin}.com-http.us").Path("/frames/{frame}").HandlerFunc(rts.NXFrame(ifsprx)).Name("nxiframe")
+
+	//	r.Host("libs.com-http.us").Path("/{libs}/{lib}").HandlerFunc(rts.NXLib(ifsprx)).Name("nxiframe")
+
+	r.PathPrefix("/json/").Handler(http.StripPrefix("/json/", http.FileServer(http.Dir("./JDB/"))))
+
+	r.Host("l.com-http.us").PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("./static/libs/"))))
+
 	r.NotFoundHandler = http.HandlerFunc(rts.FOFHandler)
+	r.Schemes("https")
 
-	go log.Fatal(http.ListenAndServe(":80", handlers.CORS()(handlers.CompressHandler(r))))
+	//go log.Fatal(http.ListenAndServe(":80", handlers.CORS()(handlers.CompressHandler(r))))
 
-	// err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
-	// if err != nil {
-	// 	go log.Fatal("ListenAndServe: ", err)
-	// }
+	srv := &http.Server{
+		Handler: handlers.CORS()(handlers.CompressHandler(r)),
+		//Addr:    "com-http.us:443",
+		// Good practice: enforce timeouts for servers you create!
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
+	}
+	go log.Fatal(srv.ListenAndServeTLS("cert.crt", "key.key"))
 }

@@ -72,6 +72,7 @@ func ImgHandler(w http.ResponseWriter, r *http.Request) {
 	encoded, _ := base64.StdEncoding.DecodeString(img)
 	w.Write(encoded)
 }
+
 func IcoHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	coin := vars["coin"]

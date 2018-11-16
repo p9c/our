@@ -52,3 +52,17 @@ func NXNetworkHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.
 		p.ServeHTTP(w, r)
 	}
 }
+
+func NXPriceHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/price"
+		p.ServeHTTP(w, r)
+	}
+}
+
+func NXEcoHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/ecosystem"
+		p.ServeHTTP(w, r)
+	}
+}
