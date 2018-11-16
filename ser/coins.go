@@ -104,7 +104,7 @@ func getData() {
 				Symbol:   coin.Symbol,
 				Slug:     coin.Slug,
 				Algo:     coin.Algo,
-				Explorer: coin.Explorer,
+				BitNode: coin.BitNode,
 				CData:    coin.CData,
 				Imgs:     imgs,
 			}

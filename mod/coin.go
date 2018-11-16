@@ -8,7 +8,7 @@ type Coin struct {
 	Slug   string `json:"slug"`
 	Algo   string `json:"algo"`
 	//Algo   Algo   `json:"algo"`
-	Explorer bool     `json:"explorer"`
+	BitNode bool     `json:"bitnode"`
 	Imgs     Imgs     `json:"imgs"`
 	CData    CoinData `json:"cdata"`
 }
@@ -62,6 +62,7 @@ type CoinAmp struct {
 	Symbol string `json:"symbol"`
 	Slug   string `json:"slug"`
 	Algo   string `json:"algo"`
+	BitNode bool     `json:"bitnode"`
 }
 type BCoinAmp struct {
 	Name   string `json:"name"`
