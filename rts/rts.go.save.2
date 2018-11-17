@@ -1,0 +1,21 @@
+package rts
+
+import (
+	"encoding/json"
+	"fmt"
+	"html/template"
+	"io/ioutil"
+	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/parallelcointeam/our/conf"
+	"github.com/parallelcointeam/our/jdb"
+	"github.com/parallelcointeam/our/mod"
+	"github.com/parallelcointeam/our/tools"
+)
+
+var cf = conf.CsYsConf()
+var ComServer = cf.ComServer
+var templates = make(map[string]*template.Template)
+
+

@@ -15,7 +15,7 @@ var cf = conf.CsYsConf()
 var ComServer = cf.ComServer
 
 func init() {
-	//getData()
+//	getData()
 }
 func GetCoins() (coins []mod.VCoin) {
 	gdb, err := jdb.OpenDB()
@@ -67,7 +67,7 @@ func getData() {
 	gdb, err := jdb.OpenDB()
 	if err != nil {
 	}
-	gamp, err := http.Get(ComServer + "a/a")
+	gamp, err := http.Get(ComServer + "a/c/a")
 	if err != nil {
 		fmt.Println("AMP gampgampgampgamp", gamp)
 	}

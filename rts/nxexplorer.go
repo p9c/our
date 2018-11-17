@@ -2,67 +2,61 @@ package rts
 
 import (
 	"net/http"
-	"net/http/httputil"
 
 	"github.com/gorilla/mux"
+	"github.com/parallelcointeam/our/tools"
 )
 
-// func respondWithJSON(w http.ResponseWriter, code int, block interface{}) {
-// 	response, _ := json.Marshal(block)
-// 	w.Header().Set("Content-Type", "application/json")
-// 	w.WriteHeader(code)
-// 	w.Write(response)
-// }
 
-func NXExplorerHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/explorer"
-		p.ServeHTTP(w, r)
-	}
-}
 
-func NXBlockHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/explorer/block/" + mux.Vars(r)["id"]
-		p.ServeHTTP(w, r)
-	}
+func NXExplorerHandler(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["coin"] + "EX" + mux.Vars(r)["id"]
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["coin"] + "/explorer/"
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
 }
-func NXHashHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/explorer/hash/" + mux.Vars(r)["id"]
-		p.ServeHTTP(w, r)
-	}
-}
-func NXTxHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/explorer/tx/" + mux.Vars(r)["id"]
-		p.ServeHTTP(w, r)
-	}
-}
-func NXAddrsHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/explorer/addr/" + mux.Vars(r)["id"]
-		p.ServeHTTP(w, r)
-	}
+func NXBlockHandler(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["coin"] + "BL" + mux.Vars(r)["id"]
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["coin"] + "/explorer/block/" + mux.Vars(r)["id"]
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
 }
 
-func NXNetworkHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/network"
-		p.ServeHTTP(w, r)
-	}
+func NXHashHandler(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["coin"] + "HASH" + mux.Vars(r)["id"]
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["coin"] + "/explorer/hash/" + mux.Vars(r)["id"]
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
+}
+func NXTxHandler(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["coin"] + "TX" + mux.Vars(r)["id"]
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["coin"] + "/explorer/tx/" + mux.Vars(r)["id"]
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
+}
+func NXAddrsHandler(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["coin"] + "ADDR" + mux.Vars(r)["id"]
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["coin"] + "/explorer/addr/" + mux.Vars(r)["id"]
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
 }
 
-func NXPriceHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/price"
-		p.ServeHTTP(w, r)
-	}
+func NXNetworkHandler(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["coin"] + "Network"
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["coin"] + "/network/"
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
+}
+func NXPriceHandler(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["coin"] + "Price"
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["coin"] + "/price/"
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
+}
+func NXEcoHandler(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["coin"] + "EcoSystem"
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["coin"] + "/ecosystem/"
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
 }
 
-func NXEcoHandler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/coin/" + mux.Vars(r)["coin"] + "/ecosystem"
-		p.ServeHTTP(w, r)
-	}
-}

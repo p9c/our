@@ -5,6 +5,8 @@ import (
 	"net/http/httputil"
 
 	"github.com/gorilla/mux"
+	"github.com/parallelcointeam/our/tools"
+
 )
 
 // func respondWithJSON(w http.ResponseWriter, code int, block interface{}) {
@@ -99,9 +101,11 @@ func NXNuxtSSSSSub(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Req
 	}
 }
 
-func Frames(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = "/" + mux.Vars(r)["frame"] + "/" + mux.Vars(r)["file"]
-		p.ServeHTTP(w, r)
-	}
+
+func Frames(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["frame"] + "S" + mux.Vars(r)["file"]
+	url := "http://127.0.0.1:3553/coin/" + mux.Vars(r)["frame"] + "/" + mux.Vars(r)["file"]
+	data := tools.GetData(name, url)
+	w.Write([]byte(data))
 }
+
