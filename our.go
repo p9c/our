@@ -14,12 +14,14 @@ package main
 
 import (
 	"fmt"
-//	"time"
+	"time"
+	//	"time"
 
 	"log"
 	"net/http"
-//	"net/http/httputil"
-//	"net/url"
+
+	//	"net/http/httputil"
+	//	"net/url"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -28,13 +30,14 @@ import (
 )
 
 const (
-    // HTTPMethodOverrideHeader is a commonly used
-    // http header to override a request method.
-    HTTPMethodOverrideHeader = "X-HTTP-Method-Override"
-    // HTTPMethodOverrideFormKey is a commonly used
-    // HTML form key to override a request method.
-    HTTPMethodOverrideFormKey = "_method"
+	// HTTPMethodOverrideHeader is a commonly used
+	// http header to override a request method.
+	HTTPMethodOverrideHeader = "X-HTTP-Method-Override"
+	// HTTPMethodOverrideFormKey is a commonly used
+	// HTML form key to override a request method.
+	HTTPMethodOverrideFormKey = "_method"
 )
+
 func main() {
 	cr := cron.New()
 	cr.AddFunc("@every 121215s", func() {
@@ -44,13 +47,10 @@ func main() {
 
 	r := mux.NewRouter()
 
-
 	r.Host("com-http.us").Path("/").HandlerFunc(rts.NXIndexHandler).Name("nxindex")
 	r.Host("com-http.us").Path("/coins").HandlerFunc(rts.NXCoinsHandler).Name("nxcoins")
 	r.Host("com-http.us").Path("/words").HandlerFunc(rts.NXWordsHandler).Name("nxwords")
 	r.Host("{coin}.com-http.us").Path("/").HandlerFunc(rts.NXCoinHandler).Name("nxcoin")
-
-
 
 	r.Host("com-http.us").Path("/a/coins").HandlerFunc(rts.CoinsAMP).Name("coinsamp")
 	r.Host("com-http.us").Path("/a/coinsimg").HandlerFunc(rts.CoinsAMPimg).Name("coinsampimg")
@@ -62,15 +62,12 @@ func main() {
 	r.Host("{coin}.com-http.us").Path("/explorer/tx/{id}").HandlerFunc(rts.NXTxHandler).Name("nxtx")
 	r.Host("{coin}.com-http.us").Path("/explorer/addr/{id}").HandlerFunc(rts.NXAddrsHandler).Name("nxaddr")
 
-
-
 	r.Host("{coin}.com-http.us").Path("/explorer/search").HandlerFunc(rts.DoSearch).Name("search")
 
 	r.Host("{coin}.com-http.us").Path("/network").HandlerFunc(rts.NXNetworkHandler).Name("nxnetwork")
 	r.Host("{coin}.com-http.us").Path("/price").HandlerFunc(rts.NXPriceHandler).Name("nxprice")
 	r.Host("{coin}.com-http.us").Path("/ecosystem").HandlerFunc(rts.NXEcoHandler).Name("nxeco")
 	r.Host("f.com-http.us").Path("/{frame}/{file}").HandlerFunc(rts.Frames).Name("nxframes")
-
 
 	r.Host("{coin}.com-http.us").Path("/a/b").HandlerFunc(rts.ApiLastBlock).Name("b")
 	r.Host("{coin}.com-http.us").Path("/a/bta/{id}").HandlerFunc(rts.ApiBlockTxAddr).Name("bta")
@@ -93,9 +90,6 @@ func main() {
 
 	r.Host("{coin}.com-http.us").Path("/frames/{frame}").HandlerFunc(rts.FrameHandler).Name("frame")
 
-
-
-
 	r.PathPrefix("/json/").Handler(http.StripPrefix("/json/", http.FileServer(http.Dir("./JDB/"))))
 
 	r.Host("l.com-http.us").PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("./static/libs/"))))
@@ -103,7 +97,14 @@ func main() {
 	r.NotFoundHandler = http.HandlerFunc(rts.FOFHandler)
 	r.Schemes("https")
 
-	go log.Fatal(http.ListenAndServe(":80", handlers.CORS()(r)))
+	//go log.Fatal(http.ListenAndServe(":80", handlers.CORS()(r)))
 
-
+	srv := &http.Server{
+		Handler: handlers.CORS()(handlers.CompressHandler(r)),
+		//Addr:    "com-http.us:443",
+		// Good practice: enforce timeouts for servers you create!
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
+	}
+	go log.Fatal(srv.ListenAndServeTLS("cert.crt", "key.key"))
 }

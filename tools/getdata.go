@@ -25,7 +25,7 @@ func GetData(page, url string) template.HTML {
 	gdb.Read("cache", "pages", &gPage)
 	pTime := PxP[page].Time
 	timeNow := time.Now()
-	pTp := pTime.Add(time.Duration(15 * time.Minute))
+	pTp := pTime.Add(time.Duration(1 * time.Minute))
 	if timeNow.After(pTp) {
 		gData, err := http.Get(url)
 		if err != nil {
@@ -41,4 +41,3 @@ func GetData(page, url string) template.HTML {
 	}
 	return template.HTML(fmt.Sprint(string(PxP[page].Data)))
 }
-
