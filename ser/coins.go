@@ -15,7 +15,7 @@ var cf = conf.CsYsConf()
 var ComServer = cf.ComServer
 
 func init() {
-//	getData()
+	//getData()
 }
 func GetCoins() (coins []mod.VCoin) {
 	gdb, err := jdb.OpenDB()
@@ -100,13 +100,13 @@ func getData() {
 			var imgs mod.Imgs
 			json.Unmarshal(mapImgs, &imgs)
 			coin = mod.Coin{
-				Name:     coin.Name,
-				Symbol:   coin.Symbol,
-				Slug:     coin.Slug,
-				Algo:     coin.Algo,
+				Name:    coin.Name,
+				Symbol:  coin.Symbol,
+				Slug:    coin.Slug,
+				Algo:    coin.Algo,
 				BitNode: coin.BitNode,
-				CData:    coin.CData,
-				Imgs:     imgs,
+				CData:   coin.CData,
+				Imgs:    imgs,
 			}
 			// acoin = mod.CoinAmp{
 			// 	Name:   coin.Name,

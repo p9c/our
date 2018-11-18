@@ -32,13 +32,13 @@ func init() {
 	templates["ccw"] = template.Must(template.ParseFiles("tpl/frames/prices/ccw.gohtml"))
 	templates["trades"] = template.Must(template.ParseFiles("tpl/frames/prices/trades.gohtml"))
 	templates["nodes"] = template.Must(template.ParseFiles("tpl/frames/maps/nodes.gohtml"))
+	templates["magnet"] = template.Must(template.ParseFiles("tpl/frames/games/magnet.gohtml"))
+	templates["spiralogo"] = template.Must(template.ParseFiles("tpl/frames/anim/spiralogo.gohtml"))
 
 	templates["proxy"] = template.Must(template.ParseFiles("tpl/proxy/proxy.gohtml"))
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-
-
 
 	data := tools.GetData("index", "http://127.0.0.1:3553/")
 	renderTemplate(w, "proxy", "proxy", data)
@@ -79,4 +79,3 @@ func FrameHandler(w http.ResponseWriter, r *http.Request) {
 	data := vCoin
 	renderTemplate(w, frame, frame, data)
 }
-

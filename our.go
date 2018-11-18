@@ -15,6 +15,7 @@ package main
 import (
 	"fmt"
 	"time"
+
 	//	"time"
 
 	"log"
@@ -101,10 +102,10 @@ func main() {
 
 	srv := &http.Server{
 		Handler: handlers.CORS()(handlers.CompressHandler(r)),
-		//Addr:    "com-http.us:443",
+		Addr:    "com-http.us:443",
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
-	go log.Fatal(srv.ListenAndServeTLS("cert.crt", "key.key"))
+	go log.Fatal(srv.ListenAndServeTLS("./comhttp.crt", "./comhttp.key"))
 }
